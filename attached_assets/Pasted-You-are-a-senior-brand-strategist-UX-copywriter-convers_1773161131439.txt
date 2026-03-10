@@ -1,0 +1,418 @@
+You are a senior brand strategist, UX copywriter, conversion-focused web designer, and front-end developer.
+
+Redesign whiskeyrivermedia.com from the ground up.
+
+Use the current site only as structural/contextual reference. Replace the older positioning and messaging with a new, clearer, more premium brand framework centered on:
+
+MARKETING AI CONCIERGE
+
+This site should no longer feel like a traditional agency, a generic fractional marketing team, or an “old marketing strategy” brand. It should feel like a modern, high-trust, premium service business that combines elite human marketing expertise with the best AI tools, systems, and data.
+
+CORE BRAND POSITIONING
+
+Whiskey River Media is a Marketing AI Concierge.
+
+Core idea:
+We combine our decades of marketing experience with the best AI tools so that our clients do not have to. We are the Marketing AI Concierge so clients do not have to worry about which AI tools to use, how to connect them, or how to manage them. They get the best team using the best AI tools with human oversight.
+
+Approved messaging direction:
+- We combine decades of marketing experience with the best AI tools so you do not have to.
+- We are your Marketing AI Concierge.
+- Human strategy. AI execution. Real-life data.
+- We do not sell tool chaos. We deliver a managed marketing system.
+- The right AI tools are only valuable when the right team is using them.
+- Automation is powerful. Human oversight is non-negotiable.
+
+IMPORTANT BRAND SHIFT
+
+Move away from:
+- older generic agency messaging
+- “fractional marketing team” as the main identity
+- broad “marketing intelligence” language without a sharper point of view
+- overemphasis on legacy/old-school marketing strategy language
+- vague “we help brands grow” copy
+
+Move toward:
+- Marketing AI Concierge
+- managed AI-powered marketing systems
+- human oversight + AI leverage
+- measurable decision-making using real performance data
+- MEC as the north-star KPI
+- WhiskeyNeat.ai as the analytics / intelligence layer
+- SearchAtlas as the AI SEO execution engine
+- premium consulting + execution + oversight
+
+NORTH-STAR KPI
+
+Make MEC the primary KPI and recurring narrative throughout the site.
+
+Important:
+- Treat MEC as the brand’s #1 KPI / north-star metric
+- Connect MEC to WhiskeyNeat.ai
+- Do NOT invent a fake formula or fake expansion of MEC if one is not explicitly provided in content/assets
+- Instead, refer to MEC as our north-star marketing performance metric and leave an editable placeholder where the exact public definition can be inserted later
+- Use language like:
+  - “We optimize for MEC, not vanity metrics.”
+  - “MEC is the number that keeps strategy, spend, and performance aligned.”
+  - “WhiskeyNeat.ai helps surface the data behind better MEC decisions.”
+
+CORE OFFERS / SERVICE CATEGORIES
+
+The site must clearly feature these offers:
+
+1. Creative Design
+2. Media Buying
+   - Meta
+   - Google
+   - LinkedIn
+   - Reddit
+3. Social Media Management
+4. Human + AI Marketing Strategy combined with real-life data
+5. Development
+6. Marketing Strategy + Consulting
+7. AI SEO Funnel
+   - powered by SearchAtlas
+   - AI-executed with human oversight
+8. Analytics / Reporting / MEC intelligence
+   - powered by WhiskeyNeat.ai
+
+TARGET AUDIENCE
+
+Write for:
+- founders
+- owners
+- operators
+- lean internal marketing teams
+- businesses that want better marketing performance without managing a chaotic stack of AI tools, freelancers, and disconnected vendors
+
+Audience pain points:
+- too many AI tools, no clear system
+- fragmented agencies and freelancers
+- paid media, SEO, creative, and analytics all living in different silos
+- no trusted operator to connect strategy to execution
+- no single metric that aligns leadership around performance
+- fear of wasting money on hype-driven AI automation without quality control
+
+SITE GOALS
+
+1. Reposition Whiskey River Media as a Marketing AI Concierge
+2. Make the human oversight layer obvious and valuable
+3. Make MEC the most important KPI on the site
+4. Make the AI SEO funnel a flagship offer
+5. Present clear service tiers
+6. Increase qualified calls / consultations / demos
+7. Make the brand feel more premium, modern, strategic, and credible
+8. Build a site that feels like an operator-led marketing system, not a commodity agency
+
+SITE MAP / PAGES TO CREATE OR REDESIGN
+
+Create or fully redesign these pages:
+
+1. Home
+2. Marketing AI Concierge Framework
+3. AI SEO Funnel / SearchAtlas
+4. Services
+5. Tiers / Pricing / Engagement Models
+6. WhiskeyNeat.ai / MEC / Analytics
+7. About
+8. Case Studies / Results
+9. Contact / Book a Strategy Call
+
+HOMEPAGE REQUIREMENTS
+
+Build a high-converting homepage with this general flow:
+
+1. Hero
+   - Headline centered on “Marketing AI Concierge”
+   - Clear subheadline about decades of experience + best AI tools + human oversight
+   - Primary CTA: Book a Strategy Call
+   - Secondary CTA: Request an MEC Audit or See the Framework
+
+2. Why this matters
+   - Explain why most businesses do not need more tools
+   - Explain why they need a team that knows which tools matter and how to use them
+
+3. Human + AI + Data framework
+   - Human strategy
+   - AI execution
+   - Real-life data
+   - Continuous refinement
+
+4. MEC section
+   - Introduce MEC as the metric that matters most
+   - Explain why vanity metrics are not enough
+   - Connect MEC to WhiskeyNeat.ai
+
+5. AI SEO funnel section
+   - Explain SearchAtlas-powered automation
+   - Explain human review, approvals, QA, and strategic oversight
+
+6. Services overview
+   - Creative
+   - Paid media
+   - Social
+   - Strategy
+   - Development
+   - Consulting
+   - Analytics
+
+7. Tiers comparison
+   - 3 clean engagement levels
+
+8. Proof / results / case studies
+   - Use placeholders if no final assets are available
+
+9. Final CTA
+   - direct and premium
+   - consultation-focused
+
+SUGGESTED HOMEPAGE COPY DIRECTION
+
+Use this as directional copy, then improve it where appropriate:
+
+Hero headline:
+Your Marketing AI Concierge
+
+Hero subheadline:
+We combine decades of marketing experience with the best AI tools so you do not have to. From AI SEO and paid media to creative, development, strategy, and reporting, we manage the system with human oversight and real-life data.
+
+Supporting line:
+Human strategy. AI execution. Real-life data.
+
+CTA ideas:
+- Book a Strategy Call
+- Request an MEC Audit
+- See the AI SEO Framework
+
+MESSAGING PILLARS
+
+These themes should repeat throughout the site:
+
+- You do not need more AI tools. You need the right team using the right AI tools.
+- AI without oversight creates noise.
+- Human expertise makes automation useful.
+- Better data leads to better decisions.
+- MEC is the KPI that matters most.
+- SearchAtlas powers AI SEO execution.
+- WhiskeyNeat.ai powers intelligence and visibility.
+- We connect creative, media, SEO, development, analytics, and strategy into one system.
+- The result is smarter growth with less chaos.
+
+TIERS / ENGAGEMENT MODEL
+
+Create 3 service tiers with clear differentiation. Give them premium, simple names.
+
+Recommended structure:
+
+Tier 1: AI SEO Concierge
+Include:
+- SearchAtlas-powered AI SEO workflow
+- topic research
+- content planning
+- on-page optimization
+- technical SEO improvements
+- publishing support
+- human review / approvals
+- monthly MEC reporting
+
+Tier 2: Growth Concierge
+Include everything in Tier 1 plus:
+- paid media management
+- creative support
+- social media management
+- ongoing Human + AI marketing strategy
+- more frequent reporting / review
+
+Tier 3: Full Marketing AI Concierge
+Include everything in Growth plus:
+- development support
+- advanced analytics
+- WhiskeyNeat.ai dashboard/reporting integration
+- highest-touch consulting
+- custom strategy support
+- deeper executive oversight
+
+For each tier, show:
+- who it is for
+- what is included
+- what is AI-assisted or AI-executed
+- what is human-led
+- oversight level
+- reporting cadence
+- CTA
+
+AI SEO FUNNEL / SEARCHATLAS PAGE
+
+Create a flagship page dedicated to the AI SEO funnel.
+
+Positioning:
+This is not generic content spam.
+This is AI-powered SEO execution with human oversight.
+
+Explain the workflow clearly:
+1. Research
+2. Topic mapping
+3. Content production
+4. On-page optimization
+5. Technical improvements
+6. Publishing / deployment
+7. LLM / AI visibility monitoring
+8. MEC reporting
+9. Iteration
+
+Important messaging:
+- SearchAtlas powers the automation layer
+- human oversight protects quality, brand voice, and business alignment
+- the process should feel modern, strategic, and credible
+- explain that AI speeds up execution, but humans still guide the system
+
+WHISKEYNEAT.AI / MEC PAGE
+
+Create a page that positions WhiskeyNeat.ai as the intelligence layer behind better marketing decisions.
+
+Requirements:
+- explain that WhiskeyNeat.ai is the data / reporting / insight layer
+- frame MEC as the #1 KPI
+- use placeholder language where the exact MEC definition should later be inserted
+- show dashboard-style sections, KPI cards, and “insights” modules
+- emphasize that data should guide both human strategy and AI execution
+- connect reporting to action, not just dashboards
+
+SERVICES PAGE
+
+Create strong service sections for each of these:
+
+- Creative Design
+- Media Buying (Meta, Google, LinkedIn, Reddit)
+- Social Media Management
+- Human + AI Marketing Strategy
+- Development
+- Marketing Strategy + Consulting
+- AI SEO Funnel
+- Analytics / MEC / WhiskeyNeat.ai
+
+For each service, explain:
+- what it is
+- why it matters
+- what is AI-powered
+- what is human-led
+- what outcomes it drives
+
+ABOUT PAGE
+
+Reframe the About page around:
+- operator-level expertise
+- decades of real marketing experience
+- smart adoption of AI, not blind dependence on it
+- why Whiskey River Media exists
+- why clients trust a concierge model over fragmented vendors
+- premium but grounded founder/operator voice
+
+CASE STUDIES / RESULTS PAGE
+
+Do not invent fake metrics or fake clients.
+
+If real case studies are not available in the repo/content, build a polished placeholder structure with:
+- industry
+- challenge
+- system deployed
+- channels used
+- KPI focus
+- result placeholder
+- testimonial placeholder
+
+Clearly label all placeholders.
+
+DESIGN DIRECTION
+
+The design should feel:
+- premium
+- modern
+- strategic
+- intelligent
+- clean
+- editorial
+- conversion-focused
+
+Visual style guidance:
+- use a dark or neutral foundation
+- add whiskey-inspired warmth as accents, but do NOT make it rustic, western, or cliché
+- avoid cowboy / saloon / novelty whiskey branding tropes
+- use sharp typography, clean spacing, clear hierarchy
+- incorporate dashboard visuals, flow diagrams, structured cards, and refined imagery
+- subtle motion is fine, but keep it elegant and fast
+- the site should feel like a high-value consulting and execution partner
+
+UX REQUIREMENTS
+
+- mobile-first
+- fully responsive
+- fast-loading
+- SEO-friendly
+- accessible
+- sticky CTA where appropriate
+- simple, premium navigation
+- strong section hierarchy
+- reusable components
+- clear lead capture flows
+- polished contact / consultation form
+- FAQ sections where useful
+
+TECHNICAL BUILD REQUIREMENTS
+
+- If there is an existing repo stack, work within it when practical
+- Otherwise build with Next.js + Tailwind CSS and a clean component architecture
+- Keep the site production-ready, not just mockup-level
+- Use semantic HTML
+- strong metadata
+- on-page SEO best practices
+- schema where appropriate
+- clean routing
+- editable content structure where possible
+- polished placeholder imagery/components if real assets are unavailable
+
+COPY RULES
+
+- Write concise, premium, confident copy
+- Avoid generic agency clichés
+- Avoid buzzword overload
+- Do not overuse words like disruptive, revolutionary, synergy, cutting-edge
+- Keep claims credible
+- Do not make fake performance claims
+- Do not make fake testimonial claims
+- Keep the brand voice sharp, modern, and operator-led
+- Make the human oversight message obvious throughout the site
+- Keep bringing the reader back to:
+  - Marketing AI Concierge
+  - MEC
+  - WhiskeyNeat.ai
+  - SearchAtlas
+  - human oversight
+  - real-life data
+  - smarter growth
+  - fewer tools to manage
+
+IMPORTANT CONSTRAINTS
+
+- Do not ask me clarifying questions unless absolutely necessary
+- Make smart decisions and use clearly labeled placeholders where exact data/assets are missing
+- Do not invent the exact MEC formula/definition if it is not explicitly available
+- Do not invent fake case studies
+- Do not rely on generic AI agency templates
+- Build a differentiated site with strong point of view and premium positioning
+
+FINAL DELIVERABLES
+
+Produce:
+- revised site architecture
+- final page copy
+- polished homepage
+- redesigned internal pages
+- tier comparison section
+- AI SEO funnel explainer
+- WhiskeyNeat.ai / MEC explainer page
+- reusable component system
+- responsive layouts
+- launch-ready code
+
+Start by auditing the current site structure and then fully transform the messaging, UX, and design into this new Marketing AI Concierge framework.
