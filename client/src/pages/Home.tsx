@@ -1,355 +1,218 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, BarChart3, BrainCircuit, CheckCircle2, ChevronRight, Compass, LineChart, Network, Search, Zap } from "lucide-react";
-import { motion } from "framer-motion";
-import heroBg from "@/assets/images/hero-bg.png";
-import dashboardMockup from "@/assets/images/dashboard-mockup.png";
-import aiSeoAbstract from "@/assets/images/ai-seo-abstract.png";
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
+import { Link } from "wouter";
+import { ArrowRight, BarChart3, Database, Target, Layers } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [revenue, setRevenue] = useState(0);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setRevenue(10);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
+    <div className="min-h-screen pt-24 bg-noise">
       
       {/* 1. Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
-        {/* Background Image & Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={heroBg} 
-            alt="Abstract technology background" 
-            className="w-full h-full object-cover opacity-40 mix-blend-screen"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/95 to-background"></div>
-          <div className="absolute inset-0 bg-grid-white opacity-20"></div>
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+      <section className="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-6 py-20 overflow-hidden">
+        {/* Spotight */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber/10 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+          <p className="font-sans font-bold uppercase tracking-[0.12em] text-amber text-xs mb-8">
+            Marketing AI Concierge
+          </p>
+          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] text-[#F5F0E8] mb-8">
+            Scale Smarter. <br/>
+            <span className="text-amber/90">Exit Stronger.</span>
+          </h1>
+          <p className="font-sans text-lg md:text-xl text-[#F5F0E8]/70 max-w-2xl leading-relaxed mb-12">
+            We combine decades of senior marketing strategy with AI execution to build marketing engines that drive growth now — and increase business value when it's time to sell.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <Link href="/services" className="inline-flex justify-center items-center px-8 py-4 bg-amber hover:bg-amber-light text-[#0a0a08] font-sans font-bold rounded-sm transition-colors text-base">
+              See How It Works
+            </Link>
+            <Link href="/apply" className="inline-flex justify-center items-center px-8 py-4 border border-amber text-amber hover:bg-amber/5 font-sans font-bold rounded-sm transition-colors text-base">
+              Apply to Work With Us
+            </Link>
+          </div>
         </div>
 
-        <div className="container relative z-10 mx-auto px-6 md:px-12">
-          <motion.div 
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-primary mb-8 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-              <span className="text-xs font-semibold tracking-wider uppercase">Managed Marketing System</span>
-            </motion.div>
-            
-            <motion.h1 variants={fadeInUp} className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold tracking-tight text-white mb-6 leading-[1.1]">
-              Your Marketing <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-orange-300 to-primary">AI Concierge</span>
-            </motion.h1>
-            
-            <motion.p variants={fadeInUp} className="text-lg md:text-xl text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
-              We combine decades of marketing experience with the best AI tools so you do not have to. 
-              From AI SEO and paid media to creative, development, strategy, and reporting, we manage the system with human oversight and real-life data.
-            </motion.p>
-            
-            <motion.p variants={fadeInUp} className="font-heading font-medium tracking-wide text-white/90 mb-12 flex items-center justify-center gap-4 text-sm md:text-base">
-              <span>HUMAN STRATEGY</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
-              <span>AI EXECUTION</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
-              <span>REAL-LIFE DATA</span>
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" className="rounded-full px-8 h-14 text-base font-semibold w-full sm:w-auto hover:scale-105 transition-transform">
-                Book a Strategy Call
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full px-8 h-14 text-base font-semibold w-full sm:w-auto bg-white/5 border-white/10 hover:bg-white/10 backdrop-blur-sm">
-                Request an MEC Audit
-              </Button>
-            </motion.div>
-          </motion.div>
+        {/* Ticker */}
+        <div className="absolute bottom-10 left-0 w-full border-y border-[#252420] bg-[#111110]/50 backdrop-blur-md py-4 overflow-hidden">
+          <div className="flex justify-center gap-12 md:gap-24 text-sm font-sans text-[#8A8478] tracking-wide whitespace-nowrap">
+            <span className="flex items-center gap-2"><span className="text-amber">$0 &rarr; ${revenue}M</span> Revenue Journeys</span>
+            <span className="hidden md:inline">•</span>
+            <span>AI + Human Execution</span>
+            <span className="hidden sm:inline">•</span>
+            <span className="hidden sm:inline">Exit-Ready Systems</span>
+          </div>
         </div>
       </section>
 
-      {/* 2. Why this matters */}
-      <section className="py-24 relative border-t border-white/5">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight">
-                You don't need more tools.<br />
-                <span className="text-white/50">You need a system.</span>
-              </h2>
-              <p className="text-white/70 text-lg leading-relaxed mb-8">
-                The market is flooded with disconnected AI tools, fragmented agencies, and siloed freelancers. 
-                Automation without oversight creates noise, not growth. 
+      {/* 2. Three Pillars */}
+      <section className="py-32 px-6 bg-[#0a0a08]">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid md:grid-cols-3 gap-12 md:gap-8">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 rounded-full bg-[#161614] border border-[#252420] flex items-center justify-center mb-6">
+                <Database className="w-6 h-6 text-amber" />
+              </div>
+              <h3 className="font-heading text-3xl font-bold mb-4">Systems</h3>
+              <p className="font-sans text-[#8A8478] leading-relaxed">
+                We build the foundation. Without structure, there's no scale.
               </p>
-              <p className="text-white/70 text-lg leading-relaxed mb-8">
-                We believe the right AI tools are only valuable when the right team is using them. We are operators who connect strategy to execution under one roof.
-              </p>
-              <ul className="space-y-4">
-                {[
-                  "Eliminate chaotic tech stacks",
-                  "Stop managing disconnected vendors",
-                  "Ensure quality with mandatory human oversight"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-white/90">
-                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-3xl blur-3xl"></div>
-              <div className="glass-card rounded-3xl p-8 relative z-10 border border-white/10">
-                <img src={aiSeoAbstract} alt="System Architecture" className="w-full h-auto rounded-xl" />
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 rounded-full bg-[#161614] border border-[#252420] flex items-center justify-center mb-6">
+                <Target className="w-6 h-6 text-amber" />
+              </div>
+              <h3 className="font-heading text-3xl font-bold mb-4">Scale</h3>
+              <p className="font-sans text-[#8A8478] leading-relaxed">
+                We activate growth with AI-powered execution and data-driven targeting.
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 rounded-full bg-[#161614] border border-[#252420] flex items-center justify-center mb-6">
+                <BarChart3 className="w-6 h-6 text-amber" />
+              </div>
+              <h3 className="font-heading text-3xl font-bold mb-4">Exit</h3>
+              <p className="font-sans text-[#8A8478] leading-relaxed">
+                Everything is engineered for optionality — so you can sell, raise, or step away on your terms.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Services Preview */}
+      <section className="py-32 px-6 bg-[#111110]">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-16">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4">Four Doors. One Direction.</h2>
+            <p className="font-sans text-xl text-[#8A8478] max-w-2xl">
+              Every engagement starts with a conversation about where you are and where you want to go.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { title: "AI SEO", desc: "Human strategy. AI execution. SearchAtlas-powered." },
+              { title: "Media Buying", desc: "Paid media across Meta, Google, YouTube, TikTok." },
+              { title: "Branding & Messaging", desc: "Voice, identity, and content that converts." },
+              { title: "Web & App Development", desc: "Sites and systems built to scale." }
+            ].map((s, i) => (
+              <div key={i} className="bg-[#161614] border border-[#252420] border-l-2 border-l-amber p-8 hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(0,0,0,0.5)] transition-all duration-300">
+                <h3 className="font-heading text-2xl font-bold mb-3">{s.title}</h3>
+                <p className="font-sans text-[#8A8478] mb-6">{s.desc}</p>
+                <Link href="/services" className="font-sans text-amber font-bold text-sm inline-flex items-center gap-2 hover:text-amber-light transition-colors">
+                  Learn More <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Why Whiskey River */}
+      <section className="py-32 px-6 border-y border-[#252420]">
+        <div className="container mx-auto max-w-6xl">
+          <div className="border-l-4 border-amber pl-8 md:pl-12 mb-20 max-w-4xl">
+            <h2 className="font-heading text-3xl md:text-5xl font-bold text-[#F5F0E8] leading-snug">
+              "We don't do random acts of marketing. We build repeatable systems — and then we manage them so you don't have to."
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <ul className="space-y-6">
+              {[
+                "AI + Human hybrid execution model",
+                "Exit-focused strategy from day one",
+                "MEC-driven reporting (Marketing Efficiency Coefficient)",
+                "Month-to-month after initial 90-day build"
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-4">
+                  <span className="w-6 h-6 rounded-full bg-amber/10 text-amber flex items-center justify-center shrink-0 mt-0.5">
+                    <CheckIcon className="w-3 h-3" />
+                  </span>
+                  <span className="font-sans text-lg text-[#F5F0E8]/80">{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="bg-[#161614] border border-[#252420] rounded-sm p-10 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-amber/5 rounded-full blur-[80px] pointer-events-none group-hover:bg-amber/10 transition-colors duration-500"></div>
+              <div className="relative z-10">
+                <Layers className="w-8 h-8 text-amber mb-6" />
+                <h3 className="font-heading text-3xl font-bold mb-4">WhiskeyNeat.ai</h3>
+                <p className="font-sans text-[#8A8478] mb-8 leading-relaxed">
+                  Your marketing data. Your intelligence layer. Powered by WhiskeyNeat.ai. Real-time visibility into the metrics that actually drive business value.
+                </p>
+                <Link href="/intelligence" className="font-sans text-[#0a0a08] bg-amber hover:bg-amber-light px-6 py-3 rounded-sm font-bold inline-flex items-center gap-2 transition-colors">
+                  Learn About Our Intelligence Platform <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. Human + AI + Data framework */}
-      <section className="py-24 bg-white/[0.02] border-y border-white/5 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
-        <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">The Concierge Framework</h2>
-            <p className="text-white/60 text-lg">A seamless integration of elite marketing expertise, cutting-edge AI execution, and irrefutable performance data.</p>
-          </div>
-
+      {/* 5. Social Proof */}
+      <section className="py-32 px-6 bg-[#0a0a08]">
+        <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: <BrainCircuit className="w-8 h-8 text-primary" />,
-                title: "Human Strategy",
-                desc: "Decades of operator-level marketing experience guiding the ship. We set the direction, define the voice, and maintain strict quality control."
+                quote: "They turned our brand into a sales machine... a record-setting Black Friday.",
+                author: "Aftermarket Truck Parts CEO"
               },
               {
-                icon: <Zap className="w-8 h-8 text-primary" />,
-                title: "AI Execution",
-                desc: "We deploy the best-in-class AI tools to research, generate, and scale execution faster than traditional agencies ever could."
+                quote: "They didn't just build us a website — they built the foundation for a future sale.",
+                author: "Energy Supply Co CEO"
               },
               {
-                icon: <LineChart className="w-8 h-8 text-primary" />,
-                title: "Real-Life Data",
-                desc: "Decisions driven by actual performance, not vanity metrics. We measure what matters to continuously refine the system."
+                quote: "We tripled our lead flow in 90 days, and it's built to run without us.",
+                author: "SaaS CEO"
               }
-            ].map((card, i) => (
-              <div key={i} className="glass-card p-10 rounded-3xl hover:-translate-y-2 transition-transform duration-300">
-                <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-8">
-                  {card.icon}
-                </div>
-                <h3 className="text-2xl font-heading font-bold text-white mb-4">{card.title}</h3>
-                <p className="text-white/60 leading-relaxed">{card.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. MEC Section */}
-      <section className="py-32 relative">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="glass-card rounded-[3rem] p-12 md:p-20 overflow-hidden relative">
-            <div className="absolute -right-40 -top-40 w-96 h-96 bg-primary/20 rounded-full blur-[100px]"></div>
-            <div className="absolute -left-40 -bottom-40 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]"></div>
-            
-            <div className="grid md:grid-cols-2 gap-16 items-center relative z-10">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary mb-6">
-                  <BarChart3 className="w-4 h-4" />
-                  <span className="text-xs font-semibold tracking-wider">NORTH-STAR KPI</span>
-                </div>
-                <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
-                  Optimize for MEC. <br/>
-                  <span className="text-white/50">Ignore the vanity.</span>
-                </h2>
-                <p className="text-white/70 text-lg leading-relaxed mb-6">
-                  MEC is the number that keeps strategy, spend, and performance aligned. We optimize for MEC, not vanity metrics like impressions or empty clicks.
-                </p>
-                <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-8 backdrop-blur-sm">
-                  <p className="font-mono text-sm text-white/50 mb-2">// METRIC DEFINITION</p>
-                  <p className="text-white font-medium">[MEC Definition Placeholder - Public formula to be inserted]</p>
-                </div>
-                <p className="text-white/70 mb-8">
-                  Powered by <strong className="text-white">WhiskeyNeat.ai</strong>, our intelligence layer surfaces the data behind better MEC decisions.
-                </p>
-                <Button className="rounded-full flex items-center gap-2">
-                  Explore WhiskeyNeat.ai <ArrowRight className="w-4 h-4" />
-                </Button>
-              </div>
-              
-              <div className="relative">
-                <img src={dashboardMockup} alt="WhiskeyNeat.ai Dashboard" className="rounded-2xl border border-white/10 shadow-2xl shadow-black/50" />
-                
-                {/* Floating Metric Card */}
-                <div className="absolute -bottom-8 -left-8 glass-card p-6 rounded-2xl border border-white/10 shadow-xl animate-in slide-in-from-bottom-8 duration-1000">
-                  <p className="text-xs text-white/50 font-medium tracking-wider mb-1">CURRENT MEC</p>
-                  <div className="flex items-end gap-3">
-                    <span className="text-4xl font-heading font-bold text-white">4.2x</span>
-                    <span className="text-sm font-medium text-emerald-400 mb-1 flex items-center"><ChevronRight className="w-4 h-4 -rotate-90"/> 12%</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. AI SEO funnel section */}
-      <section className="py-24 border-t border-white/5">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">Flagship AI SEO Funnel</h2>
-            <p className="text-white/60 text-lg">Powered by SearchAtlas. Executed by AI. Reviewed by Humans.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {[
-              { step: "01", title: "Research & Mapping", desc: "Data-driven topic clusters" },
-              { step: "02", title: "AI Content Engine", desc: "SearchAtlas automated drafting" },
-              { step: "03", title: "Human QA & Polish", desc: "Brand voice & accuracy check" },
-              { step: "04", title: "Deploy & Monitor", desc: "Technical SEO & LLM visibility" }
-            ].map((phase, i) => (
-              <div key={i} className="glass-card p-8 rounded-2xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-6 text-6xl font-heading font-bold text-white/[0.03] group-hover:text-primary/[0.05] transition-colors">
-                  {phase.step}
-                </div>
-                <div className="relative z-10">
-                  <h4 className="text-xl font-heading font-bold text-white mb-3 mt-8">{phase.title}</h4>
-                  <p className="text-sm text-white/60">{phase.desc}</p>
+            ].map((t, i) => (
+              <div key={i} className="bg-[#111110] border border-[#252420] p-8 flex flex-col justify-between">
+                <p className="font-heading text-xl italic text-[#F5F0E8]/90 mb-8 leading-relaxed">"{t.quote}"</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-[1px] bg-amber"></div>
+                  <span className="font-sans text-xs uppercase tracking-widest text-[#8A8478]">{t.author}</span>
                 </div>
               </div>
             ))}
           </div>
-          
-          <div className="mt-12 text-center">
-             <Button variant="link" className="text-white hover:text-primary">
-                See the full AI SEO Framework <ArrowRight className="w-4 h-4 ml-2" />
-             </Button>
-          </div>
         </div>
       </section>
 
-      {/* 6. Services Overview */}
-      <section className="py-24 bg-white/[0.02] border-y border-white/5">
-        <div className="container mx-auto px-6 md:px-12">
-           <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-16">The Full System</h2>
-           
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
-             {[
-               { title: "Media Buying", desc: "Meta, Google, LinkedIn, and Reddit management optimized for MEC." },
-               { title: "Creative Design", desc: "High-converting assets fueled by data and crafted by human designers." },
-               { title: "Social Management", desc: "Strategic presence and community engagement." },
-               { title: "Human + AI Strategy", desc: "Overarching game plan combining intuition with algorithmic scale." },
-               { title: "Development", desc: "Technical implementation, landing pages, and web infrastructure." },
-               { title: "AI SEO Funnel", desc: "SearchAtlas powered organic growth engine." },
-               { title: "Analytics & MEC", desc: "Intelligence layer powered by WhiskeyNeat.ai." },
-               { title: "Consulting", desc: "Direct access to senior marketing operators." }
-             ].map((service, i) => (
-                <div key={i} className="border-l border-white/10 pl-6 hover:border-primary transition-colors">
-                  <h4 className="text-lg font-heading font-semibold text-white mb-2">{service.title}</h4>
-                  <p className="text-sm text-white/50 leading-relaxed">{service.desc}</p>
-                </div>
-             ))}
-           </div>
-        </div>
-      </section>
-
-      {/* 7. Tiers Comparison */}
-      <section className="py-32">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-6">Engagement Models</h2>
-            <p className="text-white/60 text-lg">Clear, structured tiers for businesses ready to scale with a managed system.</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {/* Tier 1 */}
-            <div className="glass-card rounded-3xl p-10 flex flex-col">
-              <h3 className="text-2xl font-heading font-bold text-white mb-2">AI SEO Concierge</h3>
-              <p className="text-sm text-white/50 mb-8 h-10">Foundational AI-powered organic growth system.</p>
-              <ul className="space-y-4 mb-10 flex-grow text-sm text-white/70">
-                <li className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-white/30 shrink-0" /> SearchAtlas-powered workflow</li>
-                <li className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-white/30 shrink-0" /> Topic research & content planning</li>
-                <li className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-white/30 shrink-0" /> Human review & approvals</li>
-                <li className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-white/30 shrink-0" /> Monthly MEC reporting</li>
-              </ul>
-              <Button variant="outline" className="w-full rounded-full border-white/10 hover:bg-white/5">Select Tier</Button>
-            </div>
-
-            {/* Tier 2 */}
-            <div className="glass-card rounded-3xl p-10 flex flex-col relative border-primary/50 shadow-[0_0_30px_rgba(234,131,49,0.1)]">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-primary-foreground text-xs font-bold px-4 py-1 rounded-full">
-                MOST POPULAR
-              </div>
-              <h3 className="text-2xl font-heading font-bold text-white mb-2">Growth Concierge</h3>
-              <p className="text-sm text-white/50 mb-8 h-10">Comprehensive multi-channel execution and strategy.</p>
-              <ul className="space-y-4 mb-10 flex-grow text-sm text-white/70">
-                <li className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-primary shrink-0" /> Everything in AI SEO Concierge</li>
-                <li className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-primary shrink-0" /> Paid media management</li>
-                <li className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-primary shrink-0" /> Creative & social support</li>
-                <li className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-primary shrink-0" /> Ongoing Human + AI strategy</li>
-              </ul>
-              <Button className="w-full rounded-full">Select Tier</Button>
-            </div>
-
-            {/* Tier 3 */}
-            <div className="glass-card rounded-3xl p-10 flex flex-col">
-              <h3 className="text-2xl font-heading font-bold text-white mb-2">Full Marketing AI</h3>
-              <p className="text-sm text-white/50 mb-8 h-10">The ultimate outsourced marketing system.</p>
-              <ul className="space-y-4 mb-10 flex-grow text-sm text-white/70">
-                <li className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-white/30 shrink-0" /> Everything in Growth Concierge</li>
-                <li className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-white/30 shrink-0" /> Development support</li>
-                <li className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-white/30 shrink-0" /> WhiskeyNeat.ai integration</li>
-                <li className="flex gap-3"><CheckCircle2 className="w-5 h-5 text-white/30 shrink-0" /> Highest-touch consulting</li>
-              </ul>
-              <Button variant="outline" className="w-full rounded-full border-white/10 hover:bg-white/5">Select Tier</Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Proof Placeholder */}
-      <section className="py-24 border-t border-white/5">
-        <div className="container mx-auto px-6 md:px-12 text-center">
-          <p className="text-sm font-semibold tracking-wider text-white/40 uppercase mb-8">System Results</p>
-          <div className="glass-card max-w-4xl mx-auto rounded-3xl p-12 border-dashed border-white/20">
-             <h3 className="text-2xl font-heading text-white/50 mb-4">[Case Study Placeholder]</h3>
-             <p className="text-white/40 mb-6">Industry | Challenge | System Deployed | MEC Result</p>
-             <blockquote className="text-xl text-white/80 italic">"[Testimonial placeholder detailing the impact of human oversight and AI execution.]"</blockquote>
-          </div>
-        </div>
-      </section>
-
-      {/* 9. Final CTA */}
-      <section className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/5"></div>
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
-        
-        <div className="container mx-auto px-6 md:px-12 relative z-10 text-center">
-          <h2 className="text-4xl md:text-6xl font-heading font-bold text-white mb-8">
-            Ready for a smarter system?
+      {/* 6. Final CTA */}
+      <section className="py-32 px-6 bg-gradient-to-b from-[#111110] to-[#0a0a08] text-center border-t border-[#252420]">
+        <div className="container mx-auto max-w-3xl">
+          <h2 className="font-heading text-4xl md:text-6xl font-bold mb-6">
+            Ready to Build a Business Worth Scaling — and Worth Buying?
           </h2>
-          <p className="text-xl text-white/60 mb-12 max-w-2xl mx-auto">
-            Stop buying random AI tools. Start working with a team that knows how to use them to drive real MEC growth.
+          <p className="font-sans text-xl text-[#8A8478] mb-10 leading-relaxed">
+            Start with a conversation. We'll tell you exactly where you are and what it would take to get where you want to go.
           </p>
-          <Button size="lg" className="rounded-full px-10 h-16 text-lg font-semibold hover:scale-105 transition-transform shadow-[0_0_40px_rgba(234,131,49,0.3)]">
-            Book Your Strategy Call
-          </Button>
+          <Link href="/apply" className="inline-flex justify-center items-center px-10 py-5 bg-amber hover:bg-amber-light text-[#0a0a08] font-sans font-bold rounded-sm transition-colors text-lg">
+            Apply to Work With Us <ArrowRight className="w-5 h-5 ml-2" />
+          </Link>
         </div>
       </section>
-
     </div>
+  );
+}
+
+function CheckIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
   );
 }
