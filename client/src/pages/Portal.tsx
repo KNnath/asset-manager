@@ -1,20 +1,76 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { mockClient } from "@/data/mockClient";
+import { api } from "@/lib/api";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { 
   Home, Box, MessageSquare, FileText, Settings, LogOut, 
-  Bell, Menu, X, ArrowUpRight, CheckCircle2, CircleDashed, Paperclip
+  Bell, Menu, X, ArrowUpRight, CheckCircle2, CircleDashed, Paperclip, Loader2
 } from "lucide-react";
 
 export default function Portal() {
   const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState("dashboard");
   const [mobileNavOpen, setMobileMenuOpen] = useState(false);
-  const [message, setMessage] = useState("");
+  const [messageText, setMessageText] = useState("");
+  const qc = useQueryClient();
 
-  const handleLogout = () => {
+  const { data: user, isLoading: userLoading, error: userError } = useQuery({
+    queryKey: ["/api/auth/me"],
+    queryFn: api.getMe,
+    retry: false,
+  });
+
+  useEffect(() => {
+    if (userError) {
+      setLocation("/login");
+    }
+  }, [userError, setLocation]);
+
+  const { data: dashboard, isLoading: dashLoading } = useQuery({
+    queryKey: ["/api/portal/dashboard"],
+    queryFn: api.getDashboard,
+    enabled: !!user,
+  });
+
+  const { data: portalMessages } = useQuery({
+    queryKey: ["/api/portal/messages"],
+    queryFn: api.getMessages,
+    enabled: !!user && activeTab === "messages",
+  });
+
+  const { data: portalReports } = useQuery({
+    queryKey: ["/api/portal/reports"],
+    queryFn: api.getReports,
+    enabled: !!user && activeTab === "reports",
+  });
+
+  const sendMsgMutation = useMutation({
+    mutationFn: (text: string) => api.sendMessage(text),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ["/api/portal/messages"] });
+      setMessageText("");
+    },
+  });
+
+  const handleLogout = async () => {
+    await api.logout();
     setLocation("/login");
   };
+
+  const handleSendMessage = () => {
+    if (!messageText.trim()) return;
+    sendMsgMutation.mutate(messageText);
+  };
+
+  if (userLoading) {
+    return (
+      <div className="min-h-screen bg-[#0a0a08] flex items-center justify-center">
+        <Loader2 className="w-8 h-8 text-amber animate-spin" />
+      </div>
+    );
+  }
+
+  if (!user) return null;
 
   const navItems = [
     { id: "dashboard", label: "Dashboard", icon: <Home className="w-5 h-5" /> },
@@ -23,6 +79,15 @@ export default function Portal() {
     { id: "reports", label: "Reports", icon: <FileText className="w-5 h-5" /> },
     { id: "settings", label: "Settings", icon: <Settings className="w-5 h-5" /> },
   ];
+
+  const formatDate = (dateStr: string) => {
+    try {
+      const d = new Date(dateStr);
+      return d.toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+    } catch {
+      return dateStr;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#0a0a08] flex">
@@ -46,6 +111,7 @@ export default function Portal() {
                   ? "bg-amber/10 text-amber" 
                   : "text-[#8A8478] hover:text-[#F5F0E8] hover:bg-[#252420]/50"
               }`}
+              data-testid={`nav-${item.id}`}
             >
               {item.icon}
               {item.label}
@@ -54,7 +120,7 @@ export default function Portal() {
         </nav>
 
         <div className="p-4 border-t border-[#252420]">
-          <button onClick={handleLogout} className="w-full flex items-center gap-3 px-4 py-3 text-[#8A8478] hover:text-red-400 transition-colors font-sans text-sm">
+          <button onClick={handleLogout} className="w-full flex items-center gap-3 px-4 py-3 text-[#8A8478] hover:text-red-400 transition-colors font-sans text-sm" data-testid="button-logout">
             <LogOut className="w-5 h-5" />
             Sign Out
           </button>
@@ -80,9 +146,9 @@ export default function Portal() {
             </button>
             <div className="flex items-center gap-3 pl-6 border-l border-[#252420]">
               <div className="w-8 h-8 rounded-full bg-amber flex items-center justify-center text-[#0a0a08] font-bold text-sm">
-                {mockClient.name.charAt(0)}
+                {user.contactName?.charAt(0) || "C"}
               </div>
-              <span className="font-sans text-sm font-medium text-[#F5F0E8] hidden md:block">{mockClient.name}</span>
+              <span className="font-sans text-sm font-medium text-[#F5F0E8] hidden md:block">{user.companyName}</span>
             </div>
           </div>
         </header>
@@ -94,66 +160,70 @@ export default function Portal() {
           {activeTab === "dashboard" && (
             <div className="space-y-10 animate-in fade-in duration-500">
               <div>
-                <h1 className="font-heading text-4xl font-bold mb-2">Good morning, {mockClient.name.split(" ")[0]}.</h1>
+                <h1 className="font-heading text-4xl font-bold mb-2">Good morning, {user.contactName?.split(" ")[0] || "there"}.</h1>
                 <p className="font-sans text-[#8A8478]">Here is your marketing intelligence overview.</p>
               </div>
 
-              {/* KPI Cards */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                <div className="bg-[#161614] border border-[#252420] border-t-2 border-t-amber p-6">
-                  <p className="font-sans text-xs text-[#8A8478] uppercase tracking-wider mb-2">MEC Score</p>
-                  <p className="font-sans text-3xl font-bold text-[#F5F0E8]">{mockClient.kpis.mecScore}<span className="text-lg text-[#8A8478]">/100</span></p>
-                </div>
-                <div className="bg-[#161614] border border-[#252420] border-t-2 border-t-amber p-6">
-                  <p className="font-sans text-xs text-[#8A8478] uppercase tracking-wider mb-2">Organic Traffic</p>
-                  <div className="flex items-center gap-2">
-                    <p className="font-sans text-3xl font-bold text-[#F5F0E8]">{mockClient.kpis.organicTrafficGrowth}</p>
-                    <ArrowUpRight className="w-4 h-4 text-emerald-500" />
-                  </div>
-                </div>
-                <div className="bg-[#161614] border border-[#252420] border-t-2 border-t-amber p-6">
-                  <p className="font-sans text-xs text-[#8A8478] uppercase tracking-wider mb-2">Paid ROAS</p>
-                  <p className="font-sans text-3xl font-bold text-[#F5F0E8]">{mockClient.kpis.paidRoas}</p>
-                </div>
-                <div className="bg-[#161614] border border-[#252420] border-t-2 border-t-amber p-6">
-                  <p className="font-sans text-xs text-[#8A8478] uppercase tracking-wider mb-2">Leads Generated</p>
-                  <p className="font-sans text-3xl font-bold text-[#F5F0E8]">{mockClient.kpis.leadsGenerated}</p>
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-6">
-                {/* Recent Activity */}
-                <div className="md:col-span-2 bg-[#111110] border border-[#252420] p-8">
-                  <h3 className="font-heading text-2xl font-bold mb-6">Recent Activity</h3>
-                  <div className="space-y-6">
-                    {mockClient.recentActivity.map((activity) => (
-                      <div key={activity.id} className="flex gap-4">
-                        <div className="mt-1"><CheckCircle2 className="w-5 h-5 text-amber" /></div>
-                        <div>
-                          <p className="font-sans text-[#F5F0E8]">{activity.action}</p>
-                          <p className="font-sans text-xs text-[#8A8478] mt-1">{activity.date}</p>
-                        </div>
+              {dashLoading ? (
+                <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 text-amber animate-spin" /></div>
+              ) : dashboard ? (
+                <>
+                  {/* KPI Cards */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    <div className="bg-[#161614] border border-[#252420] border-t-2 border-t-amber p-6" data-testid="kpi-mec">
+                      <p className="font-sans text-xs text-[#8A8478] uppercase tracking-wider mb-2">MEC Score</p>
+                      <p className="font-sans text-3xl font-bold text-[#F5F0E8]">{dashboard.kpis?.mecScore || "—"}<span className="text-lg text-[#8A8478]">/100</span></p>
+                    </div>
+                    <div className="bg-[#161614] border border-[#252420] border-t-2 border-t-amber p-6" data-testid="kpi-traffic">
+                      <p className="font-sans text-xs text-[#8A8478] uppercase tracking-wider mb-2">Organic Traffic</p>
+                      <div className="flex items-center gap-2">
+                        <p className="font-sans text-3xl font-bold text-[#F5F0E8]">{dashboard.kpis?.organicTrafficGrowth || "—"}</p>
+                        <ArrowUpRight className="w-4 h-4 text-emerald-500" />
                       </div>
-                    ))}
+                    </div>
+                    <div className="bg-[#161614] border border-[#252420] border-t-2 border-t-amber p-6" data-testid="kpi-roas">
+                      <p className="font-sans text-xs text-[#8A8478] uppercase tracking-wider mb-2">Paid ROAS</p>
+                      <p className="font-sans text-3xl font-bold text-[#F5F0E8]">{dashboard.kpis?.paidRoas || "—"}</p>
+                    </div>
+                    <div className="bg-[#161614] border border-[#252420] border-t-2 border-t-amber p-6" data-testid="kpi-leads">
+                      <p className="font-sans text-xs text-[#8A8478] uppercase tracking-wider mb-2">Leads Generated</p>
+                      <p className="font-sans text-3xl font-bold text-[#F5F0E8]">{dashboard.kpis?.leadsGenerated || "—"}</p>
+                    </div>
                   </div>
-                </div>
 
-                {/* Upcoming */}
-                <div className="bg-[#111110] border border-[#252420] p-8">
-                  <h3 className="font-heading text-2xl font-bold mb-6">Upcoming</h3>
-                  <div className="space-y-6">
-                    {mockClient.upcomingItems.map((item) => (
-                      <div key={item.id} className="flex gap-4">
-                        <div className="mt-1"><CircleDashed className="w-5 h-5 text-[#8A8478]" /></div>
-                        <div>
-                          <p className="font-sans text-[#F5F0E8]">{item.action}</p>
-                          <p className="font-sans text-xs text-amber mt-1">{item.date}</p>
-                        </div>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    <div className="md:col-span-2 bg-[#111110] border border-[#252420] p-8">
+                      <h3 className="font-heading text-2xl font-bold mb-6">Recent Activity</h3>
+                      <div className="space-y-6">
+                        {(dashboard.activity || []).map((a: any) => (
+                          <div key={a.id} className="flex gap-4">
+                            <div className="mt-1"><CheckCircle2 className="w-5 h-5 text-amber" /></div>
+                            <div>
+                              <p className="font-sans text-[#F5F0E8]">{a.action}</p>
+                              <p className="font-sans text-xs text-[#8A8478] mt-1">{formatDate(a.createdAt)}</p>
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
+
+                    <div className="bg-[#111110] border border-[#252420] p-8">
+                      <h3 className="font-heading text-2xl font-bold mb-6">Upcoming</h3>
+                      <div className="space-y-6">
+                        {(dashboard.upcoming || []).map((item: any) => (
+                          <div key={item.id} className="flex gap-4">
+                            <div className="mt-1"><CircleDashed className="w-5 h-5 text-[#8A8478]" /></div>
+                            <div>
+                              <p className="font-sans text-[#F5F0E8]">{item.action}</p>
+                              <p className="font-sans text-xs text-amber mt-1">{item.dueDate}</p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </>
+              ) : null}
             </div>
           )}
 
@@ -162,11 +232,11 @@ export default function Portal() {
             <div className="animate-in fade-in duration-500">
                <h1 className="font-heading text-4xl font-bold mb-8">Active Services</h1>
                <div className="grid gap-4">
-                 {mockClient.activeServices.map((service, idx) => (
-                   <div key={idx} className="bg-[#111110] border border-[#252420] p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                 {(dashboard?.services || []).map((service: any) => (
+                   <div key={service.id} className="bg-[#111110] border border-[#252420] p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                      <div>
                        <div className="flex items-center gap-3 mb-2">
-                         <h3 className="font-sans text-xl font-bold">{service.name}</h3>
+                         <h3 className="font-sans text-xl font-bold">{service.serviceName}</h3>
                          <span className="px-2 py-0.5 rounded-full bg-amber/10 text-amber text-xs font-bold uppercase tracking-wider">{service.status}</span>
                        </div>
                        <p className="font-sans text-sm text-[#8A8478]">Billing: {service.price}</p>
@@ -184,11 +254,11 @@ export default function Portal() {
           {activeTab === "messages" && (
             <div className="animate-in fade-in duration-500 h-[calc(100vh-12rem)] flex flex-col">
               <div className="flex-1 bg-[#111110] border border-[#252420] p-6 overflow-y-auto space-y-6">
-                {mockClient.messages.map((msg) => (
+                {(portalMessages || []).map((msg: any) => (
                   <div key={msg.id} className={`flex flex-col ${msg.sender === "You" ? "items-end" : "items-start"}`}>
                     <div className="flex items-baseline gap-2 mb-1">
                       <span className="font-sans text-xs font-bold text-[#8A8478]">{msg.sender}</span>
-                      <span className="font-sans text-[10px] text-[#252420]">{msg.time}</span>
+                      <span className="font-sans text-[10px] text-[#252420]">{formatDate(msg.createdAt)}</span>
                     </div>
                     <div className={`p-4 rounded-sm max-w-[80%] ${msg.sender === "You" ? "bg-amber text-[#0a0a08]" : "bg-[#161614] text-[#F5F0E8] border border-[#252420]"}`}>
                       <p className="font-sans text-sm">{msg.text}</p>
@@ -202,12 +272,14 @@ export default function Portal() {
                 </button>
                 <input 
                   type="text" 
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  value={messageText}
+                  onChange={(e) => setMessageText(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
                   className="flex-1 bg-[#111110] border border-[#252420] p-4 text-[#F5F0E8] focus:border-amber focus:outline-none transition-colors"
                   placeholder="Send a message to your team..."
+                  data-testid="input-message"
                 />
-                <button className="px-8 bg-amber text-[#0a0a08] font-sans font-bold hover:bg-amber-light transition-colors rounded-sm">
+                <button onClick={handleSendMessage} disabled={sendMsgMutation.isPending} className="px-8 bg-amber text-[#0a0a08] font-sans font-bold hover:bg-amber-light transition-colors rounded-sm disabled:opacity-50" data-testid="button-send-message">
                   Send
                 </button>
               </div>
@@ -219,16 +291,16 @@ export default function Portal() {
             <div className="animate-in fade-in duration-500">
                <h1 className="font-heading text-4xl font-bold mb-8">Intelligence Reports</h1>
                <div className="bg-[#111110] border border-[#252420] rounded-sm overflow-hidden">
-                 {mockClient.reports.map((report, idx) => (
-                   <div key={report.id} className={`p-6 flex items-center justify-between ${idx !== mockClient.reports.length -1 ? "border-b border-[#252420]" : ""}`}>
+                 {(portalReports || []).map((report: any, idx: number) => (
+                   <div key={report.id} className={`p-6 flex items-center justify-between ${idx !== (portalReports || []).length - 1 ? "border-b border-[#252420]" : ""}`}>
                      <div className="flex items-center gap-4">
                        <FileText className="w-8 h-8 text-amber/50 hidden sm:block" />
                        <div>
                          <h4 className="font-sans font-medium text-[#F5F0E8] mb-1">{report.name}</h4>
                          <div className="flex gap-3 text-xs font-sans text-[#8A8478]">
-                           <span>{report.date}</span>
+                           <span>{report.reportDate}</span>
                            <span>•</span>
-                           <span>{report.type}</span>
+                           <span>{report.reportType}</span>
                          </div>
                        </div>
                      </div>
@@ -238,6 +310,48 @@ export default function Portal() {
                    </div>
                  ))}
                </div>
+            </div>
+          )}
+
+          {/* Settings Tab */}
+          {activeTab === "settings" && (
+            <div className="animate-in fade-in duration-500 space-y-10">
+              <h1 className="font-heading text-4xl font-bold mb-8">Settings</h1>
+              
+              <div className="bg-[#111110] border border-[#252420] p-8">
+                <h3 className="font-heading text-2xl font-bold mb-6">Profile</h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="font-sans text-xs text-[#8A8478] uppercase tracking-wider block mb-2">Name</label>
+                    <p className="font-sans text-[#F5F0E8]">{user.contactName}</p>
+                  </div>
+                  <div>
+                    <label className="font-sans text-xs text-[#8A8478] uppercase tracking-wider block mb-2">Email</label>
+                    <p className="font-sans text-[#F5F0E8]">{user.email}</p>
+                  </div>
+                  <div>
+                    <label className="font-sans text-xs text-[#8A8478] uppercase tracking-wider block mb-2">Company</label>
+                    <p className="font-sans text-[#F5F0E8]">{user.companyName}</p>
+                  </div>
+                  <div>
+                    <label className="font-sans text-xs text-[#8A8478] uppercase tracking-wider block mb-2">Phone</label>
+                    <p className="font-sans text-[#F5F0E8]">{user.phone || "—"}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-[#111110] border border-[#252420] p-8">
+                <h3 className="font-heading text-2xl font-bold mb-6">Connected Platforms</h3>
+                <div className="flex flex-wrap gap-4">
+                  {["SearchAtlas", "Meta Ads", "Google Ads"].map((platform) => (
+                    <div key={platform} className="flex items-center gap-3 bg-[#161614] border border-[#252420] px-4 py-3 rounded-sm">
+                      <span className="font-sans text-sm text-[#F5F0E8]">{platform}</span>
+                      <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                      <span className="font-sans text-xs text-emerald-500">Connected</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           )}
 

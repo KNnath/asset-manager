@@ -1,22 +1,30 @@
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
 import { ArrowRight, Loader2 } from "lucide-react";
+import { api } from "@/lib/api";
 
 export default function Login() {
   const [, setLocation] = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !password) return;
     
     setLoading(true);
-    // Mock auth delay
-    setTimeout(() => {
+    setError("");
+    
+    try {
+      await api.login(email, password);
       setLocation("/portal");
-    }, 1500);
+    } catch (err: any) {
+      setError(err.message || "Login failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -33,6 +41,12 @@ export default function Login() {
         </div>
 
         <form onSubmit={handleLogin} className="bg-[#111110] border border-[#252420] p-8 space-y-6">
+          {error && (
+            <div className="bg-red-900/20 border border-red-800/50 text-red-300 text-sm p-4 rounded-sm">
+              {error}
+            </div>
+          )}
+          
           <div className="space-y-2">
             <label className="font-sans text-sm font-bold text-[#F5F0E8] uppercase tracking-wider">Email</label>
             <input 
@@ -40,7 +54,8 @@ export default function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full bg-[#0a0a08] border border-[#252420] p-4 text-[#F5F0E8] focus:border-amber focus:outline-none transition-colors" 
-              placeholder="client@company.com" 
+              placeholder="client@apexindustrial.com" 
+              data-testid="input-email"
             />
           </div>
           
@@ -55,6 +70,7 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               className="w-full bg-[#0a0a08] border border-[#252420] p-4 text-[#F5F0E8] focus:border-amber focus:outline-none transition-colors" 
               placeholder="••••••••" 
+              data-testid="input-password"
             />
           </div>
 
@@ -62,10 +78,15 @@ export default function Login() {
             type="submit" 
             disabled={loading || !email || !password}
             className="w-full bg-amber hover:bg-amber-light text-[#0a0a08] font-sans font-bold py-4 rounded-sm transition-colors flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            data-testid="button-signin"
           >
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Sign In"}
             {!loading && <ArrowRight className="w-5 h-5" />}
           </button>
+          
+          <p className="text-center text-xs text-[#8A8478] mt-2">
+            Demo: client@apexindustrial.com / demo123
+          </p>
         </form>
 
         <div className="mt-8 text-center">
