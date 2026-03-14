@@ -123,7 +123,7 @@ export default function Home() {
         <div className="container mx-auto max-w-6xl">
           <div className="border-l-4 border-amber pl-8 md:pl-12 mb-20 max-w-4xl">
             <h2 className="font-heading text-3xl md:text-5xl font-bold text-[#F5F0E8] leading-snug">
-              "We don't do random acts of marketing. We build repeatable systems — and then we manage them so you don't have to."
+              "Hope is not a strategy. We combine decades of experience with AI-powered systems and human oversight to build repeatable marketing engines that scale."
             </h2>
           </div>
 
