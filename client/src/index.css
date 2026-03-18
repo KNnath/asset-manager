@@ -5,7 +5,7 @@
 
 @theme inline {
   --font-sans: 'DM Sans', sans-serif;
-  --font-heading: 'Cormorant Garamond', serif;
+  --font-heading: 'Playfair Display', serif;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -37,34 +37,48 @@
 }
 
 :root {
-  --background: 60 11% 4%; /* #0a0a08 */
-  --foreground: 37 33% 94%; /* #F5F0E8 */
+  /* WRM exact color palette */
+  --bg-base: #0c0b09;
+  --bg-section: #111009;
+  --bg-card: #181610;
+  --bg-card-hover: #1e1c14;
+  --gold: #C4941F;
+  --gold-btn: #C4941F;
+  --gold-btn-text: #0c0b09;
+  --text-primary: #EDE8DF;
+  --text-secondary: #7a7468;
+  --text-tertiary: #4a463f;
+  --border-subtle: rgba(255,255,255,0.06);
+  --border-gold: rgba(196,148,31,0.35);
 
-  --card: 60 5% 8%; /* #161614 */
-  --card-foreground: 37 33% 94%;
+  /* Original theme mappings */
+  --background: 37 21% 3%; /* #0c0b09 */
+  --foreground: 36 29% 90%; /* #EDE8DF */
 
-  --popover: 60 5% 8%;
-  --popover-foreground: 37 33% 94%;
+  --card: 40 14% 8%; /* #181610 */
+  --card-foreground: 36 29% 90%;
 
-  /* Amber Accent */
-  --primary: 39 65% 47%; /* #C8922A */
-  --primary-foreground: 60 11% 4%;
+  --popover: 40 14% 8%;
+  --popover-foreground: 36 29% 90%;
 
-  --secondary: 60 3% 6%; /* #111110 */
-  --secondary-foreground: 37 33% 94%;
+  --primary: 43 73% 44%; /* #C4941F */
+  --primary-foreground: 37 21% 3%;
 
-  --muted: 60 3% 6%;
-  --muted-foreground: 40 7% 51%; /* #8A8478 */
+  --secondary: 38 11% 6%;
+  --secondary-foreground: 36 29% 90%;
 
-  --accent: 39 65% 47%;
-  --accent-foreground: 60 11% 4%;
+  --muted: 38 11% 6%;
+  --muted-foreground: 37 9% 44%; /* #7a7468 */
+
+  --accent: 43 73% 44%;
+  --accent-foreground: 37 21% 3%;
 
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 48 7% 14%; /* #252420 */
-  --input: 48 7% 14%;
-  --ring: 39 65% 47%;
+  --border: 0 0% 100% / 0.06;
+  --input: 0 0% 100% / 0.06;
+  --ring: 43 73% 44%;
 
   --radius: 0.25rem;
 }
@@ -75,6 +89,10 @@
   }
   body {
     @apply font-sans antialiased bg-background text-foreground;
+    background-color: var(--bg-base);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
