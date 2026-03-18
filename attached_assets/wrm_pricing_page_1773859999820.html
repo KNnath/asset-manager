@@ -1,0 +1,372 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+  * { box-sizing: border-box; }
+  .p { font-family: 'DM Sans', sans-serif; color: var(--color-text-primary); max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #B85A30; margin-bottom: 0.5rem; }
+  h1.page-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; margin: 0 0 0.75rem; line-height: 1.1; }
+  h2.section-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin: 0 0 0.25rem; }
+  .sub { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #B85A30; margin-bottom: 1.25rem; font-weight: 500; }
+  .lead { font-size: 15px; line-height: 1.75; color: var(--color-text-secondary); max-width: 680px; margin: 0 0 2rem; }
+  .divider { height: 0.5px; background: var(--color-border-tertiary); margin: 3rem 0; }
+  .service-block { margin-bottom: 3rem; }
+
+  /* Tier cards */
+  .tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1.25rem 0; }
+  .tier-card { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.75rem; position: relative; }
+  .tier-card.featured { border: 1.5px solid #B85A30; }
+  .tier-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-secondary); margin-bottom: 0.75rem; font-weight: 500; }
+  .tier-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; margin: 0 0 1.25rem; }
+  .tier-price { margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .tier-price .setup-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-secondary); margin-bottom: 0.3rem; }
+  .tier-price .setup-val { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 0.75rem; }
+  .tier-price .monthly-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-secondary); margin-bottom: 0.3rem; }
+  .tier-price .monthly-val { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #B85A30; }
+  .tier-includes { font-size: 13px; line-height: 1.6; color: var(--color-text-secondary); }
+  .tier-includes li { padding: 0.3rem 0; list-style: none; display: flex; gap: 0.5rem; }
+  .tier-includes li::before { content: '—'; color: #B85A30; flex-shrink: 0; }
+  .featured-badge { position: absolute; top: -1px; right: 1.25rem; background: #B85A30; color: #fff; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 0 0 4px 4px; font-weight: 500; }
+
+  /* Media buying */
+  .media-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 1.25rem 0; border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); overflow: hidden; }
+  .media-tier { padding: 1.5rem; background: var(--color-background-secondary); }
+  .media-tier + .media-tier { border-left: 0.5px solid var(--color-border-tertiary); }
+  .media-pct { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: #B85A30; line-height: 1; margin-bottom: 0.4rem; }
+  .media-range { font-size: 13px; color: var(--color-text-secondary); }
+  .media-notes { margin-top: 1.25rem; border-top: 0.5px solid var(--color-border-tertiary); padding-top: 1rem; }
+  .media-note { display: flex; gap: 0.6rem; font-size: 13.5px; color: var(--color-text-secondary); padding: 0.3rem 0; }
+  .media-note::before { content: '✓'; color: #B85A30; flex-shrink: 0; }
+
+  /* Partnership tiers */
+  .partner-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.25rem 0; }
+  .partner-card { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.75rem; }
+  .partner-card.featured { border: 1.5px solid #B85A30; }
+  .partner-tier { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #B85A30; font-weight: 500; margin-bottom: 0.5rem; }
+  .partner-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin: 0 0 0.5rem; }
+  .partner-tagline { font-size: 13.5px; color: var(--color-text-secondary); margin-bottom: 1.25rem; line-height: 1.55; }
+  .partner-invest { padding: 1rem 0; border-top: 0.5px solid var(--color-border-tertiary); border-bottom: 0.5px solid var(--color-border-tertiary); margin-bottom: 1rem; }
+  .partner-invest .amount { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--color-text-primary); }
+  .partner-invest .spend { font-size: 13px; color: var(--color-text-secondary); margin-top: 3px; }
+  .partner-scope { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+  .partner-scope li { list-style: none; display: flex; gap: 0.5rem; padding: 0.25rem 0; }
+  .partner-scope li::before { content: '—'; color: #B85A30; flex-shrink: 0; }
+
+  /* BDM + Web */
+  .custom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.25rem 0; }
+  .custom-card { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.75rem; }
+  .custom-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; margin: 0 0 0.5rem; }
+  .custom-desc { font-size: 14px; color: var(--color-text-secondary); line-height: 1.65; margin-bottom: 1.25rem; }
+  .custom-list { margin-bottom: 1.25rem; }
+  .custom-list li { font-size: 13.5px; color: var(--color-text-secondary); list-style: none; display: flex; gap: 0.5rem; padding: 0.25rem 0; }
+  .custom-list li::before { content: '•'; color: #B85A30; }
+  .custom-pricing { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-secondary); margin-bottom: 0.75rem; font-weight: 500; }
+  .cta-link { font-size: 14px; font-weight: 500; color: #B85A30; text-decoration: none; }
+
+  /* Alacarte */
+  .alacarte { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin: 1.25rem 0; }
+  .ac-item { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem 1.1rem; }
+  .ac-service { font-size: 14px; font-weight: 500; margin-bottom: 0.3rem; }
+  .ac-price { font-size: 13px; color: #B85A30; font-weight: 500; }
+  .ac-note { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
+
+  /* Note block */
+  .note-block { border-left: 2px solid #B85A30; padding: 0.75rem 1rem; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--color-text-secondary); line-height: 1.65; margin: 1.5rem 0; }
+
+  /* Engagement terms */
+  .terms-row { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.25rem 0; }
+  .term { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.9rem 1.1rem; flex: 1; min-width: 160px; }
+  .term .t-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-secondary); margin-bottom: 0.3rem; }
+  .term .t-val { font-size: 14px; font-weight: 500; }
+
+  /* CTA block */
+  .cta-block { background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 2.5rem 2rem; text-align: center; margin-top: 2rem; }
+  .cta-block h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin: 0 0 0.75rem; }
+  .cta-block p { font-size: 15px; color: var(--color-text-secondary); max-width: 500px; margin: 0 auto 1.5rem; line-height: 1.7; }
+  .cta-btn { background: #B85A30; color: #fff; border: none; padding: 13px 30px; border-radius: 4px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+
+  @media (max-width: 600px) {
+    .media-grid { grid-template-columns: 1fr; }
+    .media-tier + .media-tier { border-left: none; border-top: 0.5px solid var(--color-border-tertiary); }
+    .custom-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="p">
+
+  <p class="eyebrow">Whiskey River Media</p>
+  <h1 class="page-title">Pricing & Services</h1>
+  <p class="lead">Every engagement is built around one objective: growing your business and making it worth more. Whether you need a single service or a full-stack partner, we offer transparent pricing with no hidden fees and no bloated retainers.</p>
+
+  <!-- ═══ AI SEO ═══ -->
+  <div class="service-block">
+    <h2 class="section-title">AI SEO Concierge</h2>
+    <p class="sub">Powered by SearchAtlas + Human QA</p>
+    <p class="lead" style="margin-bottom:1rem;">Search visibility that compounds in value over time. We combine AI-powered research and content production with senior strategist oversight — so you rank, convert, and build an organic asset that increases your company's worth at exit.</p>
+
+    <div class="tier-grid">
+      <div class="tier-card">
+        <div class="tier-label">Tier 01</div>
+        <div class="tier-name">AI SEO Starter</div>
+        <div class="tier-price">
+          <div class="setup-label">Setup</div>
+          <div class="setup-val">$2,500 audit (credited) → $6,500 setup</div>
+          <div class="monthly-label">Monthly</div>
+          <div class="monthly-val">from $2,000/mo</div>
+        </div>
+        <ul class="tier-includes">
+          <li>AI SEO dashboard (white-labeled, client login)</li>
+          <li>25–50 keywords tracked</li>
+          <li>1 on-page optimization per month</li>
+          <li>Monthly automated SEO report</li>
+          <li>5 backlinks/month (DA 20–40, niche relevant)</li>
+        </ul>
+      </div>
+
+      <div class="tier-card">
+        <div class="tier-label">Tier 02</div>
+        <div class="tier-name">AI SEO Growth</div>
+        <div class="tier-price">
+          <div class="setup-label">Setup</div>
+          <div class="setup-val">$12,000 setup</div>
+          <div class="monthly-label">Monthly</div>
+          <div class="monthly-val">from $3,500/mo</div>
+        </div>
+        <ul class="tier-includes">
+          <li>Everything in Starter</li>
+          <li>2–3 on-page optimizations per month</li>
+          <li>2 AI + expert SEO blog posts/month</li>
+          <li>Local SEO setup + optimization (Google Business, citations)</li>
+          <li>Quarterly strategy call with U.S. SEO expert</li>
+          <li>10 backlinks/month (DA 30–50, niche relevant)</li>
+        </ul>
+      </div>
+
+      <div class="tier-card featured">
+        <div class="featured-badge">Most Popular</div>
+        <div class="tier-label">Tier 03</div>
+        <div class="tier-name">AI SEO Concierge</div>
+        <div class="tier-price">
+          <div class="setup-label">Setup</div>
+          <div class="setup-val">$18,000–$25,000 setup</div>
+          <div class="monthly-label">Monthly</div>
+          <div class="monthly-val">from $5,500/mo</div>
+        </div>
+        <ul class="tier-includes">
+          <li>Everything in Growth</li>
+          <li>4–6 blog posts/month</li>
+          <li>Competitor keyword + backlink tracking</li>
+          <li>Monthly SEO strategy call with U.S. expert</li>
+          <li>Technical SEO audit + implementation</li>
+          <li>LLM visibility strategy (ChatGPT, Perplexity, Gemini)</li>
+          <li>Exit-ready SEO reporting (MEC dashboard)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note-block">"Every AI SEO engagement starts with a $2,500 MEC Audit + AI Opportunity Map. This fee is credited toward setup if you sign within 14 days."</div>
+
+    <div class="tier-grid" style="margin-top:0;">
+      <div class="tier-card">
+        <div class="tier-label">Tier 04 — Scale</div>
+        <div class="tier-name">Enterprise SEO</div>
+        <div class="tier-price">
+          <div class="setup-label">Setup</div>
+          <div class="setup-val">Custom scoped</div>
+          <div class="monthly-label">Monthly</div>
+          <div class="monthly-val">from $4,997/mo</div>
+        </div>
+        <ul class="tier-includes">
+          <li>Everything in Concierge</li>
+          <li>8–12 blog posts/month</li>
+          <li>Weekly SEO strategy call with U.S. expert</li>
+          <li>Full content calendar + editorial direction</li>
+          <li>Dedicated SEO account lead</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ═══ FULL PARTNERSHIP TIERS ═══ -->
+  <div class="service-block">
+    <h2 class="section-title">Full-Stack Partnership Tiers</h2>
+    <p class="sub">Paid Media + Strategy + SEO — Pick Your Depth</p>
+    <p class="lead" style="margin-bottom:1rem;">For founders who want more than media buying — a strategic growth partner who leads the entire revenue architecture. Three tiers based on how much you want WRM to own vs. how much stays internal. All tiers use a base retainer + % of total ad spend model.</p>
+
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="partner-tier">Tier I</div>
+        <div class="partner-name">Paid Media Execution</div>
+        <div class="partner-tagline">For companies with strong internal strategy already in place. WRM operates strictly as your paid media buying and optimization team.</div>
+        <div class="partner-invest">
+          <div class="amount">$5,500/mo + 6% of ad spend</div>
+          <div class="spend">Ad spend billed directly to client</div>
+        </div>
+        <ul class="partner-scope">
+          <li>META + Google campaign buildout and management</li>
+          <li>Audience targeting and segmentation</li>
+          <li>Budget allocation and scaling</li>
+          <li>Ongoing optimization + monthly reporting</li>
+        </ul>
+      </div>
+
+      <div class="partner-card featured">
+        <div class="featured-badge">Recommended</div>
+        <div class="partner-tier">Tier II</div>
+        <div class="partner-name">Strategic Direction + Media</div>
+        <div class="partner-tagline">Adds structured strategic guidance to paid media execution. WRM works alongside your internal team to strengthen alignment, measurement, and optimization.</div>
+        <div class="partner-invest">
+          <div class="amount">$7,500/mo + 5% of ad spend</div>
+          <div class="spend">Ad spend billed directly to client</div>
+        </div>
+        <ul class="partner-scope">
+          <li>Everything in Tier I</li>
+          <li>Monthly strategic planning session</li>
+          <li>Campaign roadmap + structured testing framework</li>
+          <li>Audience architecture development</li>
+          <li>Offer positioning guidance</li>
+          <li>Funnel performance review + retargeting buildout</li>
+          <li>KPI alignment + attribution optimization</li>
+        </ul>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-tier">Tier III</div>
+        <div class="partner-name">Full-Funnel Growth Partner</div>
+        <div class="partner-tagline">End-to-end revenue architecture. Marketing transitions from a channel to a system. WRM leads paid acquisition, SEO, CRO, and long-term authority building.</div>
+        <div class="partner-invest">
+          <div class="amount">$10,000/mo + 4% of ad spend</div>
+          <div class="spend">Ad spend billed directly to client</div>
+        </div>
+        <ul class="partner-scope">
+          <li>Everything in Tier II</li>
+          <li>End-to-end campaign architecture + funnel design</li>
+          <li>Conversion rate optimization strategy</li>
+          <li>Advanced retargeting ecosystems</li>
+          <li>High-intent Google search dominance</li>
+          <li>Competitor capture initiatives</li>
+          <li>Full SEO / GEO implementation</li>
+          <li>Monthly SEO reporting + ongoing optimization</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ═══ MEDIA BUYING STANDALONE ═══ -->
+  <div class="service-block">
+    <h2 class="section-title">Media Buying</h2>
+    <p class="sub">Standalone Paid Media Management</p>
+    <p class="lead" style="margin-bottom:1rem;">Paid media management across Meta, Google, YouTube, TikTok, Pinterest, and Bing. Management fees are always separate from ad spend — your budget goes entirely toward media.</p>
+
+    <div class="media-grid">
+      <div class="media-tier">
+        <div class="media-pct">15%</div>
+        <div class="media-range">$5K–$15K Monthly Spend</div>
+      </div>
+      <div class="media-tier">
+        <div class="media-pct">12%</div>
+        <div class="media-range">$15K–$50K Monthly Spend</div>
+      </div>
+      <div class="media-tier">
+        <div class="media-pct">10%</div>
+        <div class="media-range">$50K+ Monthly Spend</div>
+      </div>
+    </div>
+    <div class="media-notes">
+      <div class="media-note">+$1,000/month per additional ad platform beyond the first two</div>
+      <div class="media-note">Media management fees are always separate from retainer fees</div>
+      <div class="media-note">Ad spend billed directly to client — no markup on spend</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ═══ BRANDING + DESIGN + MESSAGING ═══ -->
+  <div class="service-block">
+    <h2 class="section-title">Branding, Design + Messaging</h2>
+    <p class="sub">Brand Identity · Visual Design · Voice & Positioning</p>
+
+    <div class="custom-grid">
+      <div class="custom-card">
+        <div class="custom-title">Branding + Design + Messaging</div>
+        <div class="custom-desc">Your brand is your most transferable asset. We build it to last — and to sell. From visual identity to voice and positioning, everything we create is engineered to convert and to increase your company's value at exit.</div>
+        <ul class="custom-list">
+          <li>Brand Identity + Logo System</li>
+          <li>Visual Design + Style Guide</li>
+          <li>Voice & Tone Development</li>
+          <li>Messaging Architecture + Positioning</li>
+          <li>Content Strategy</li>
+          <li>Creative Direction</li>
+        </ul>
+        <div class="custom-pricing">Custom — Starts with a discovery call</div>
+        <a class="cta-link" href="#">Start a Branding Conversation →</a>
+      </div>
+
+      <div class="custom-card">
+        <div class="custom-title">Web & App Development</div>
+        <div class="custom-desc">We build sites and systems that convert — and that become intellectual property when you exit. Clean architecture, conversion-optimized, built to scale whether you have 100 visitors or 100,000.</div>
+        <ul class="custom-list">
+          <li>Website Design & Development</li>
+          <li>Landing Pages</li>
+          <li>App Development</li>
+          <li>CMS Setup + Integration</li>
+          <li>Funnel Architecture</li>
+          <li>Conversion Rate Optimization</li>
+        </ul>
+        <div class="custom-pricing">Project-based — Scoped after discovery</div>
+        <a class="cta-link" href="#">Talk Development →</a>
+      </div>
+    </div>
+
+    <div class="note-block">"Creative production, landing pages, advanced funnel development, and custom design work outside of a package are billed at $150 per deliverable or custom scoped rate. All work is pre-scoped and approved."</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ═══ À LA CARTE ═══ -->
+  <div class="service-block">
+    <h2 class="section-title">À La Carte Services</h2>
+    <p class="sub">Individual services, scoped independently</p>
+
+    <div class="alacarte">
+      <div class="ac-item"><div class="ac-service">SEO / GEO Only</div><div class="ac-price">$1,000–$2,500/mo</div><div class="ac-note">+ % of ad spend if applicable</div></div>
+      <div class="ac-item"><div class="ac-service">Google Ads Only</div><div class="ac-price">$1,500/mo</div><div class="ac-note">+ % of ad spend</div></div>
+      <div class="ac-item"><div class="ac-service">META Ads Only</div><div class="ac-price">$3,500/mo</div><div class="ac-note">+ % of ad spend</div></div>
+      <div class="ac-item"><div class="ac-service">TikTok Ads Only</div><div class="ac-price">$3,500/mo</div><div class="ac-note">+ % of ad spend</div></div>
+      <div class="ac-item"><div class="ac-service">LinkedIn Ads Only</div><div class="ac-price">$1,500/mo</div><div class="ac-note">+ % of ad spend</div></div>
+      <div class="ac-item"><div class="ac-service">Funnel Audit</div><div class="ac-price">$1,500</div><div class="ac-note">One-time</div></div>
+      <div class="ac-item"><div class="ac-service">MEC Audit + AI Opportunity Map</div><div class="ac-price">$2,500</div><div class="ac-note">Credited toward setup if signed within 14 days</div></div>
+      <div class="ac-item"><div class="ac-service">Attribution Audit</div><div class="ac-price">Scoped</div><div class="ac-note">Quoted after discovery</div></div>
+      <div class="ac-item"><div class="ac-service">Campaign Strategy Intensive</div><div class="ac-price">Scoped</div><div class="ac-note">Quoted after discovery</div></div>
+      <div class="ac-item"><div class="ac-service">CRO Engagement</div><div class="ac-price">Scoped</div><div class="ac-note">Quoted after discovery</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ═══ ENGAGEMENT TERMS ═══ -->
+  <div class="service-block">
+    <h2 class="section-title">Engagement Structure</h2>
+    <p class="lead" style="margin-bottom:1rem;">We keep it simple. No long-term lock-ins after the build. No surprises on the invoice.</p>
+    <div class="terms-row">
+      <div class="term"><div class="t-label">Initial Commitment</div><div class="t-val">90-day build engagement</div></div>
+      <div class="term"><div class="t-label">After 90 Days</div><div class="t-val">Month-to-month</div></div>
+      <div class="term"><div class="t-label">Billing Cycle</div><div class="t-val">Monthly</div></div>
+      <div class="term"><div class="t-label">Strategy Reviews</div><div class="t-val">Every 30 days</div></div>
+      <div class="term"><div class="t-label">Ad Spend</div><div class="t-val">Billed directly to client</div></div>
+      <div class="term"><div class="t-label">Minimum Revenue</div><div class="t-val">$1M+ annually</div></div>
+    </div>
+  </div>
+
+  <!-- ═══ CTA ═══ -->
+  <div class="cta-block">
+    <p class="eyebrow" style="text-align:center; margin-bottom:0.75rem;">Not sure which tier is right for you?</p>
+    <h2>Start with a conversation.</h2>
+    <p>We'll audit where you are, show you the gaps, and recommend the right engagement — honestly. No overselling. No pressure.</p>
+    <button class="cta-btn">Apply to Work With Us</button>
+  </div>
+
+</div>
