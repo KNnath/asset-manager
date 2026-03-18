@@ -44,8 +44,7 @@ export default function Home() {
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <p 
-            data-hero-anim="0"
-            className="font-sans text-xs font-normal tracking-[0.16em] uppercase mb-8 opacity-0"
+            className="font-sans text-xs font-normal tracking-[0.16em] uppercase mb-8"
             style={{ color: 'var(--gold)' }}
           >
             Marketing AI Concierge
@@ -53,8 +52,7 @@ export default function Home() {
           
           <h1 className="font-heading font-bold leading-none mb-8">
             <div 
-              data-hero-anim="100"
-              className="opacity-0"
+              className=""
               style={{ 
                 fontSize: 'clamp(3rem, 7vw, 5rem)',
                 color: 'var(--text-primary)',
@@ -64,8 +62,7 @@ export default function Home() {
               Scale Smarter.
             </div>
             <div 
-              data-hero-anim="220"
-              className="italic opacity-0"
+              className="italic"
               style={{ 
                 fontSize: 'clamp(3rem, 7vw, 5rem)',
                 color: 'var(--gold)',
@@ -77,16 +74,14 @@ export default function Home() {
           </h1>
           
           <p 
-            data-hero-anim="380"
-            className="font-sans text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-10 opacity-0"
+            className="font-sans text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-10"
             style={{ color: 'var(--text-secondary)' }}
           >
             We build AI-powered marketing systems that unstick growth-stage businesses — and make them worth significantly more when it's time to sell. No bloated retainers. No vanity metrics. Just compounding results engineered from day one around your exit.
           </p>
           
           <div 
-            data-hero-anim="520"
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14 opacity-0"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14"
           >
             <a 
               href="#how-it-works"
@@ -112,8 +107,7 @@ export default function Home() {
           </div>
 
           <div 
-            data-hero-anim="680"
-            className="flex flex-wrap items-center justify-center gap-8 pt-6 opacity-0"
+            className="flex flex-wrap items-center justify-center gap-8 pt-6"
             style={{ borderTop: '1px solid var(--border-subtle)' }}
           >
             <span className="font-sans text-xs" style={{ color: 'var(--text-secondary)' }}>$0 → $10M Revenue Journeys</span>
@@ -141,7 +135,7 @@ export default function Home() {
               { icon: <Target className="w-6 h-6" />, title: "Scale", desc: "We activate growth with AI-powered execution and data-driven targeting." },
               { icon: <BarChart3 className="w-6 h-6" />, title: "Exit", desc: "Everything is engineered for optionality — so you can sell, raise, or step away on your terms." }
             ].map((pillar, i) => (
-              <div key={i} data-scroll-anim className="text-center opacity-0" style={{ transitionDelay: `${i * 80}ms` }}>
+              <div key={i} className="text-center">
                 <div 
                   className="w-16 h-16 rounded-full mx-auto mb-5 flex items-center justify-center"
                   style={{ backgroundColor: 'rgba(255,255,255,0.05)', color: 'var(--gold)' }}
@@ -158,7 +152,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div data-scroll-anim className="max-w-2xl opacity-0">
+          <div className="max-w-2xl">
             <h2 className="font-heading font-bold text-4xl md:text-5xl mb-4" style={{ color: 'var(--text-primary)' }}>
               Four Doors. One Direction.
             </h2>
@@ -181,13 +175,11 @@ export default function Home() {
             ].map((service, i) => (
               <div 
                 key={i}
-                data-scroll-anim
-                className="p-10 transition-all hover:bg-opacity-100 opacity-0"
+                className="p-10 transition-all hover:bg-opacity-100"
                 style={{ 
                   backgroundColor: 'var(--bg-card)',
                   border: '1px solid var(--border-subtle)',
-                  borderLeft: '2px solid var(--gold)',
-                  transitionDelay: `${i * 80}ms`
+                  borderLeft: '2px solid var(--gold)'
                 }}
               >
                 <h3 className="font-heading font-bold text-xl mb-2" style={{ color: 'var(--text-primary)' }}>
@@ -214,7 +206,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-[55%_45%] gap-16 items-center">
             
-            <div data-scroll-anim className="opacity-0">
+            <div className="">
               <blockquote 
                 className="font-heading text-2xl md:text-3xl leading-snug mb-10 pl-8"
                 style={{ 
@@ -241,12 +233,10 @@ export default function Home() {
             </div>
 
             <div 
-              data-scroll-anim
-              className="p-8 rounded-md opacity-0"
+              className="p-8 rounded-md"
               style={{ 
                 backgroundColor: 'var(--bg-card)',
-                border: '1px solid var(--border-subtle)',
-                transitionDelay: '120ms'
+                border: '1px solid var(--border-subtle)'
               }}
             >
               <Layers className="w-7 h-7 mb-5" style={{ color: 'var(--gold)' }} />
@@ -283,11 +273,9 @@ export default function Home() {
             ].map((testimonial, i) => (
               <div 
                 key={i}
-                data-scroll-anim
-                className="p-8 rounded opacity-0"
+                className="p-8 rounded"
                 style={{ 
-                  border: '1px solid var(--border-subtle)',
-                  transitionDelay: `${i * 80}ms`
+                  border: '1px solid var(--border-subtle)'
                 }}
               >
                 <p className="font-heading italic text-lg leading-relaxed mb-6" style={{ color: 'var(--text-primary)' }}>
@@ -309,8 +297,7 @@ export default function Home() {
       <section className="py-32 px-6 text-center" style={{ backgroundColor: 'var(--bg-base)' }}>
         <div className="max-w-3xl mx-auto">
           <h2 
-            data-scroll-anim
-            className="font-heading font-bold mb-6 leading-tight opacity-0"
+            className="font-heading font-bold mb-6 leading-tight"
             style={{ 
               fontSize: 'clamp(2rem, 4vw, 3.2rem)',
               color: 'var(--text-primary)'
@@ -319,29 +306,25 @@ export default function Home() {
             Ready to Build a Business Worth Scaling — and Worth Buying?
           </h2>
           <p 
-            data-scroll-anim
-            className="font-sans text-base max-w-lg mx-auto mb-8 opacity-0"
-            style={{ color: 'var(--text-secondary)', transitionDelay: '100ms' }}
+            className="font-sans text-base max-w-lg mx-auto mb-8"
+            style={{ color: 'var(--text-secondary)' }}
           >
             Start with a conversation. We'll tell you exactly where you are and what it would take to get where you want to go.
           </p>
           <Link 
             href="/apply"
-            data-scroll-anim
-            className="inline-flex items-center justify-center font-sans font-bold px-11 py-5 rounded transition-all hover:scale-[1.02] opacity-0"
+            className="inline-flex items-center justify-center font-sans font-bold px-11 py-5 rounded transition-all hover:scale-[1.02]"
             style={{ 
               backgroundColor: 'var(--gold-btn)', 
               color: 'var(--gold-btn-text)',
-              fontSize: '16px',
-              transitionDelay: '200ms'
+              fontSize: '16px'
             }}
           >
             Apply to Work With Us →
           </Link>
           <p 
-            data-scroll-anim
-            className="font-sans text-xs mt-5 opacity-0"
-            style={{ color: 'var(--text-tertiary)', transitionDelay: '300ms' }}
+            className="font-sans text-xs mt-5"
+            style={{ color: 'var(--text-tertiary)' }}
           >
             We only accept clients doing $1M+ in annual revenue. Applications are reviewed within 48 hours.
           </p>
