@@ -33,7 +33,7 @@ export default function Services() {
               {
                 tier: "Tier 01",
                 name: "AI SEO Starter",
-                setup: "$2,500 audit (credited) → $6,500 setup",
+                setup: "$1,000 setup",
                 monthly: "from $2,000/mo",
                 features: [
                   "AI SEO dashboard (white-labeled, client login)",
@@ -46,7 +46,7 @@ export default function Services() {
               {
                 tier: "Tier 02",
                 name: "AI SEO Growth",
-                setup: "$12,000 setup",
+                setup: "$1,000 setup",
                 monthly: "from $3,500/mo",
                 features: [
                   "Everything in Starter",
@@ -60,7 +60,7 @@ export default function Services() {
               {
                 tier: "Tier 03",
                 name: "AI SEO Concierge",
-                setup: "$18,000–$25,000 setup",
+                setup: "$1,000 setup",
                 monthly: "from $5,500/mo",
                 featured: true,
                 features: [
@@ -131,7 +131,7 @@ export default function Services() {
               </h3>
               <div className="mb-5 pb-5" style={{ borderBottom: '0.5px solid var(--border-subtle)' }}>
                 <p className="font-sans text-xs tracking-[0.1em] uppercase mb-1" style={{ color: 'var(--text-secondary)' }}>Setup</p>
-                <p className="font-sans text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>Custom scoped</p>
+                <p className="font-sans text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>$1,000 setup</p>
                 <p className="font-sans text-xs tracking-[0.1em] uppercase mb-1" style={{ color: 'var(--text-secondary)' }}>Monthly</p>
                 <p className="font-heading font-bold text-xl" style={{ color: 'var(--gold)' }}>from $4,997/mo</p>
               </div>
@@ -228,7 +228,7 @@ export default function Services() {
                     className="absolute -top-px right-5 px-3 py-1 text-xs font-medium tracking-[0.1em] uppercase"
                     style={{ backgroundColor: 'var(--gold)', color: '#fff', borderRadius: '0 0 4px 4px' }}
                   >
-                    Recommended
+                    Most Popular
                   </div>
                 )}
                 <p className="font-sans text-xs font-medium tracking-[0.1em] uppercase mb-2" style={{ color: 'var(--gold)' }}>
@@ -351,6 +351,21 @@ export default function Services() {
             Paid media management across Meta, Google, YouTube, TikTok, Pinterest, and Bing. Management fees are always separate from ad spend — your budget goes entirely toward media.
           </p>
 
+          <div className="p-6 mb-6" style={{ backgroundColor: 'var(--bg-card)', borderRadius: '8px', border: '0.5px solid var(--border-subtle)' }}>
+            <div className="flex flex-wrap gap-8 mb-4">
+              <div>
+                <p className="font-sans text-xs tracking-[0.1em] uppercase mb-1" style={{ color: 'var(--text-secondary)' }}>Setup</p>
+                <p className="font-heading font-bold text-2xl" style={{ color: 'var(--text-primary)' }}>$1,500</p>
+                <p className="font-sans text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>First month is setup month</p>
+              </div>
+              <div>
+                <p className="font-sans text-xs tracking-[0.1em] uppercase mb-1" style={{ color: 'var(--text-secondary)' }}>Management Fee</p>
+                <p className="font-heading font-bold text-2xl" style={{ color: 'var(--gold)' }}>% of Ad Spend</p>
+                <p className="font-sans text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>Based on monthly spend tier</p>
+              </div>
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-3 gap-0 mb-8 overflow-hidden" style={{ border: '0.5px solid var(--border-subtle)', borderRadius: '8px' }}>
             {[
               { pct: "15%", range: "$5K–$15K Monthly Spend" },
@@ -375,7 +390,8 @@ export default function Services() {
             {[
               "+$1,000/month per additional ad platform beyond the first two",
               "Media management fees are always separate from retainer fees",
-              "Ad spend billed directly to client — no markup on spend"
+              "Ad spend billed directly to client — no markup on spend",
+              "All creatives provided by client"
             ].map((note, i) => (
               <div key={i} className="flex gap-3 font-sans text-xs" style={{ color: 'var(--text-secondary)' }}>
                 <span style={{ color: 'var(--gold)' }}>✓</span>
