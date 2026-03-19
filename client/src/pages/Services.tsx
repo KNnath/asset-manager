@@ -173,7 +173,7 @@ export default function Services() {
                 tier: "Tier I",
                 name: "Paid Media Execution",
                 tagline: "For companies with strong internal strategy already in place. WRM operates strictly as your paid media buying and optimization team.",
-                price: "$5,500/mo + 6% of ad spend",
+                price: "$5,500/mo + 10% of ad spend",
                 scope: [
                   "META + Google campaign buildout and management",
                   "Audience targeting and segmentation",
@@ -185,7 +185,7 @@ export default function Services() {
                 tier: "Tier II",
                 name: "Strategic Direction + Media",
                 tagline: "Adds structured strategic guidance to paid media execution. WRM works alongside your internal team to strengthen alignment, measurement, and optimization.",
-                price: "$7,500/mo + 5% of ad spend",
+                price: "$7,500/mo + 8% of ad spend",
                 featured: true,
                 scope: [
                   "Everything in Tier I",
@@ -201,7 +201,7 @@ export default function Services() {
                 tier: "Tier III",
                 name: "Full-Funnel Growth Partner",
                 tagline: "End-to-end revenue architecture. Marketing transitions from a channel to a system. WRM leads paid acquisition, SEO, CRO, and long-term authority building.",
-                price: "$10,000/mo + 4% of ad spend",
+                price: "$10,000/mo + 6% of ad spend",
                 scope: [
                   "Everything in Tier II",
                   "End-to-end campaign architecture + funnel design",
@@ -252,54 +252,6 @@ export default function Services() {
                     </li>
                   ))}
                 </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <div className="h-px mb-16" style={{ background: 'var(--border-subtle)' }}></div>
-
-        {/* Media Buying Standalone */}
-        <section className="mb-20">
-          <h2 className="font-heading font-bold text-3xl mb-2" style={{ color: 'var(--text-primary)' }}>
-            Media Buying
-          </h2>
-          <p className="font-sans text-xs font-medium tracking-[0.1em] uppercase mb-6" style={{ color: 'var(--gold)' }}>
-            Standalone Paid Media Management
-          </p>
-          <p className="font-sans text-sm mb-8 max-w-3xl" style={{ color: 'var(--text-secondary)', lineHeight: '1.75' }}>
-            Paid media management across Meta, Google, YouTube, TikTok, Pinterest, and Bing. Management fees are always separate from ad spend — your budget goes entirely toward media.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-0 mb-8 overflow-hidden" style={{ border: '0.5px solid var(--border-subtle)', borderRadius: '8px' }}>
-            {[
-              { pct: "15%", range: "$5K–$15K Monthly Spend" },
-              { pct: "12%", range: "$15K–$50K Monthly Spend" },
-              { pct: "10%", range: "$50K+ Monthly Spend" }
-            ].map((tier, i) => (
-              <div
-                key={i}
-                className="p-6"
-                style={{
-                  backgroundColor: 'var(--bg-card)',
-                  borderLeft: i > 0 ? '0.5px solid var(--border-subtle)' : 'none'
-                }}
-              >
-                <p className="font-heading font-bold text-4xl mb-2" style={{ color: 'var(--gold)', lineHeight: '1' }}>{tier.pct}</p>
-                <p className="font-sans text-xs" style={{ color: 'var(--text-secondary)' }}>{tier.range}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="space-y-2 pt-4" style={{ borderTop: '0.5px solid var(--border-subtle)' }}>
-            {[
-              "+$1,000/month per additional ad platform beyond the first two",
-              "Media management fees are always separate from retainer fees",
-              "Ad spend billed directly to client — no markup on spend"
-            ].map((note, i) => (
-              <div key={i} className="flex gap-3 font-sans text-xs" style={{ color: 'var(--text-secondary)' }}>
-                <span style={{ color: 'var(--gold)' }}>✓</span>
-                <span>{note}</span>
               </div>
             ))}
           </div>
@@ -382,6 +334,54 @@ export default function Services() {
             <p className="font-heading italic text-base" style={{ color: 'var(--text-secondary)', lineHeight: '1.65' }}>
               "Creative production, landing pages, advanced funnel development, and custom design work outside of a package are billed at $150 per deliverable or custom scoped rate. All work is pre-scoped and approved."
             </p>
+          </div>
+        </section>
+
+        <div className="h-px mb-16" style={{ background: 'var(--border-subtle)' }}></div>
+
+        {/* Media Buying Standalone */}
+        <section className="mb-20">
+          <h2 className="font-heading font-bold text-3xl mb-2" style={{ color: 'var(--text-primary)' }}>
+            Media Buying
+          </h2>
+          <p className="font-sans text-xs font-medium tracking-[0.1em] uppercase mb-6" style={{ color: 'var(--gold)' }}>
+            Standalone Paid Media Management
+          </p>
+          <p className="font-sans text-sm mb-8 max-w-3xl" style={{ color: 'var(--text-secondary)', lineHeight: '1.75' }}>
+            Paid media management across Meta, Google, YouTube, TikTok, Pinterest, and Bing. Management fees are always separate from ad spend — your budget goes entirely toward media.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-0 mb-8 overflow-hidden" style={{ border: '0.5px solid var(--border-subtle)', borderRadius: '8px' }}>
+            {[
+              { pct: "15%", range: "$5K–$15K Monthly Spend" },
+              { pct: "12%", range: "$15K–$50K Monthly Spend" },
+              { pct: "10%", range: "$50K+ Monthly Spend" }
+            ].map((tier, i) => (
+              <div
+                key={i}
+                className="p-6"
+                style={{
+                  backgroundColor: 'var(--bg-card)',
+                  borderLeft: i > 0 ? '0.5px solid var(--border-subtle)' : 'none'
+                }}
+              >
+                <p className="font-heading font-bold text-4xl mb-2" style={{ color: 'var(--gold)', lineHeight: '1' }}>{tier.pct}</p>
+                <p className="font-sans text-xs" style={{ color: 'var(--text-secondary)' }}>{tier.range}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="space-y-2 pt-4" style={{ borderTop: '0.5px solid var(--border-subtle)' }}>
+            {[
+              "+$1,000/month per additional ad platform beyond the first two",
+              "Media management fees are always separate from retainer fees",
+              "Ad spend billed directly to client — no markup on spend"
+            ].map((note, i) => (
+              <div key={i} className="flex gap-3 font-sans text-xs" style={{ color: 'var(--text-secondary)' }}>
+                <span style={{ color: 'var(--gold)' }}>✓</span>
+                <span>{note}</span>
+              </div>
+            ))}
           </div>
         </section>
 
