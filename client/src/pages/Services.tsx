@@ -22,19 +22,19 @@ export default function Services() {
             AI SEO Concierge
           </h2>
           <p className="font-sans text-xs font-medium tracking-[0.1em] uppercase mb-6" style={{ color: 'var(--gold)' }}>
-            Powered by SearchAtlas + Human QA
+            WRM AI SEO + Human
           </p>
           <p className="font-sans text-sm mb-8 max-w-3xl" style={{ color: 'var(--text-secondary)', lineHeight: '1.75' }}>
             Search visibility that compounds in value over time. We combine AI-powered research and content production with senior strategist oversight — so you rank, convert, and build an organic asset that increases your company's worth at exit.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-4 mb-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
                 tier: "Tier 01",
-                name: "AI SEO Starter",
-                setup: "$1,000 setup",
-                monthly: "from $2,000/mo",
+                name: "Essential SEO",
+                subtitle: "Starter Visibility",
+                monthly: "$797/month",
                 features: [
                   "AI SEO dashboard (white-labeled, client login)",
                   "25–50 keywords tracked",
@@ -45,11 +45,11 @@ export default function Services() {
               },
               {
                 tier: "Tier 02",
-                name: "AI SEO Growth",
-                setup: "$1,000 setup",
-                monthly: "from $3,500/mo",
+                name: "Growth SEO",
+                subtitle: "Rank & Expand",
+                monthly: "$1,497/month",
                 features: [
-                  "Everything in Starter",
+                  "Everything in Essential",
                   "2–3 on-page optimizations per month",
                   "2 AI + expert SEO blog posts/month",
                   "Local SEO setup + optimization (Google Business, citations)",
@@ -59,24 +59,33 @@ export default function Services() {
               },
               {
                 tier: "Tier 03",
-                name: "AI SEO Concierge",
-                setup: "$1,000 setup",
-                monthly: "from $5,500/mo",
+                name: "Authority SEO",
+                subtitle: "Dominate Your Niche",
+                monthly: "$2,497/month",
                 featured: true,
                 features: [
                   "Everything in Growth",
                   "4–6 blog posts/month",
                   "Competitor keyword + backlink tracking",
-                  "Monthly SEO strategy call with U.S. expert",
-                  "Technical SEO audit + implementation",
-                  "LLM visibility strategy (ChatGPT, Perplexity, Gemini)",
-                  "Exit-ready SEO reporting (MEC dashboard)"
+                  "Monthly SEO strategy call with U.S. expert"
+                ]
+              },
+              {
+                tier: "Tier 04",
+                name: "Enterprise SEO",
+                subtitle: "Dominate Your Niche",
+                monthly: "$4,997/month",
+                features: [
+                  "Everything in Growth",
+                  "8–12 blog posts/month",
+                  "Competitor keyword + backlink tracking",
+                  "Weekly SEO strategy call with U.S. expert"
                 ]
               }
             ].map((tier, i) => (
               <div
                 key={i}
-                className="p-7 relative"
+                className="p-7 relative flex flex-col"
                 style={{
                   border: tier.featured ? '1.5px solid var(--gold)' : '0.5px solid var(--border-subtle)',
                   borderRadius: '8px',
@@ -91,17 +100,18 @@ export default function Services() {
                     Most Popular
                   </div>
                 )}
-                <p className="font-sans text-xs font-medium tracking-[0.1em] uppercase mb-3" style={{ color: 'var(--text-secondary)' }}>
+                <p className="font-sans text-xs font-medium tracking-[0.1em] uppercase mb-2" style={{ color: 'var(--text-secondary)' }}>
                   {tier.tier}
                 </p>
-                <h3 className="font-heading font-bold text-xl mb-5" style={{ color: 'var(--text-primary)' }}>
+                <h3 className="font-heading font-bold text-xl mb-1" style={{ color: 'var(--text-primary)' }}>
                   {tier.name}
                 </h3>
+                <p className="font-sans text-xs italic mb-5" style={{ color: 'var(--text-secondary)' }}>
+                  {tier.subtitle}
+                </p>
                 <div className="mb-5 pb-5" style={{ borderBottom: '0.5px solid var(--border-subtle)' }}>
-                  <p className="font-sans text-xs tracking-[0.1em] uppercase mb-1" style={{ color: 'var(--text-secondary)' }}>Setup</p>
-                  <p className="font-sans text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>{tier.setup}</p>
-                  <p className="font-sans text-xs tracking-[0.1em] uppercase mb-1" style={{ color: 'var(--text-secondary)' }}>Monthly</p>
-                  <p className="font-heading font-bold text-xl" style={{ color: 'var(--gold)' }}>{tier.monthly}</p>
+                  <p className="font-heading font-bold text-2xl" style={{ color: 'var(--gold)' }}>{tier.monthly}</p>
+                  <p className="font-sans text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>Month 1 is Setup</p>
                 </div>
                 <ul className="space-y-2">
                   {tier.features.map((feature, j) => (
@@ -113,43 +123,6 @@ export default function Services() {
                 </ul>
               </div>
             ))}
-          </div>
-
-          <div className="mb-6 pl-6" style={{ borderLeft: '2px solid var(--gold)' }}>
-            <p className="font-heading italic text-base" style={{ color: 'var(--text-secondary)', lineHeight: '1.65' }}>
-              "Every AI SEO engagement starts with a $2,500 MEC Audit + AI Opportunity Map. This fee is credited toward setup if you sign within 14 days."
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-4">
-            <div className="p-7" style={{ border: '0.5px solid var(--border-subtle)', borderRadius: '8px', backgroundColor: 'var(--bg-card)' }}>
-              <p className="font-sans text-xs font-medium tracking-[0.1em] uppercase mb-3" style={{ color: 'var(--text-secondary)' }}>
-                Tier 04 — Scale
-              </p>
-              <h3 className="font-heading font-bold text-xl mb-5" style={{ color: 'var(--text-primary)' }}>
-                Enterprise SEO
-              </h3>
-              <div className="mb-5 pb-5" style={{ borderBottom: '0.5px solid var(--border-subtle)' }}>
-                <p className="font-sans text-xs tracking-[0.1em] uppercase mb-1" style={{ color: 'var(--text-secondary)' }}>Setup</p>
-                <p className="font-sans text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>$1,000 setup</p>
-                <p className="font-sans text-xs tracking-[0.1em] uppercase mb-1" style={{ color: 'var(--text-secondary)' }}>Monthly</p>
-                <p className="font-heading font-bold text-xl" style={{ color: 'var(--gold)' }}>from $4,997/mo</p>
-              </div>
-              <ul className="space-y-2">
-                {[
-                  "Everything in Concierge",
-                  "8–12 blog posts/month",
-                  "Weekly SEO strategy call with U.S. expert",
-                  "Full content calendar + editorial direction",
-                  "Dedicated SEO account lead"
-                ].map((feature, j) => (
-                  <li key={j} className="flex gap-2 font-sans text-xs" style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                    <span style={{ color: 'var(--gold)' }}>—</span>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
         </section>
 
