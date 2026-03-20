@@ -41,9 +41,9 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-10">
             <div className="flex items-center gap-10 text-sm font-normal" style={{ color: '#7a7468' }}>
               <Link href="/services" className="hover:opacity-100 transition-opacity" style={{ color: '#7a7468', opacity: location === '/services' ? 1 : 0.8 }}>Services</Link>
+              <Link href="/seo" className="hover:opacity-100 transition-opacity" style={{ color: '#7a7468', opacity: location === '/seo' ? 1 : 0.8 }}>AI SEO</Link>
               <Link href="/intelligence" className="hover:opacity-100 transition-opacity" style={{ color: '#7a7468', opacity: location === '/intelligence' ? 1 : 0.8 }}>Intelligence</Link>
               <Link href="/about" className="hover:opacity-100 transition-opacity" style={{ color: '#7a7468', opacity: location === '/about' ? 1 : 0.8 }}>About</Link>
-              <Link href="/blog" className="hover:opacity-100 transition-opacity" style={{ color: '#7a7468', opacity: location === '/blog' ? 1 : 0.8 }}>Blog</Link>
             </div>
           </div>
 
@@ -86,9 +86,9 @@ export function Navbar() {
         <div className="fixed inset-0 z-40 pt-24 px-6 flex flex-col" style={{ backgroundColor: '#0c0b09' }}>
           <div className="flex flex-col gap-8 text-2xl font-heading" style={{ color: '#EDE8DF' }}>
             <Link href="/services" onClick={closeMenu}>Services</Link>
+            <Link href="/seo" onClick={closeMenu}>AI SEO</Link>
             <Link href="/intelligence" onClick={closeMenu}>Intelligence</Link>
             <Link href="/about" onClick={closeMenu}>About</Link>
-            <Link href="/blog" onClick={closeMenu}>Blog</Link>
           </div>
           <div className="mt-auto pb-12 flex flex-col gap-4">
             <Link href="/login" onClick={closeMenu} className="w-full text-center px-5 py-4 rounded" style={{ border: '1px solid rgba(255,255,255,0.18)', color: '#EDE8DF' }}>

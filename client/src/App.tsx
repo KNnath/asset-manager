@@ -12,6 +12,7 @@ import Login from "@/pages/Login";
 import Portal from "@/pages/Portal";
 import Intelligence from "@/pages/Intelligence";
 import About from "@/pages/About";
+import SeoLanding from "@/pages/SeoLanding";
 
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -47,6 +48,7 @@ function Router() {
         <Route path="/apply" component={Apply} />
         <Route path="/intelligence" component={Intelligence} />
         <Route path="/about" component={About} />
+        <Route path="/seo" component={SeoLanding} />
         <Route path="/blog" component={Home} />
         <Route component={NotFound} />
       </Switch>

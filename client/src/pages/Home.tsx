@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Database, Target, BarChart3, Layers, Check } from "lucide-react";
 import { useEffect, useRef } from "react";
+import { BrandLogos } from "@/components/BrandLogos";
 
 export default function Home() {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -118,6 +119,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* BRAND LOGOS */}
+      <BrandLogos
+        subheading="Brands We've Scaled"
+        heading="From independent operators to category leaders — trusted by founders across e-commerce, B2B, SaaS, and beyond."
+        dark={true}
+      />
 
       {/* SYSTEMS · SCALE · EXIT */}
       <section 
