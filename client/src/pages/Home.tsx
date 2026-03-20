@@ -2,6 +2,42 @@ import { Link } from "wouter";
 import { Database, Target, BarChart3, Layers, Check } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { BrandLogos } from "@/components/BrandLogos";
+import { Faq } from "@/components/Faq";
+
+const homeFaqs = [
+  {
+    q: "What is Whiskey River Media?",
+    a: "Whiskey River Media is a full-stack marketing agency and AI concierge for founders scaling between $100K and $10M per month. We handle paid media, SEO, brand strategy, and growth architecture — combining AI speed with senior human oversight to drive revenue growth and increase enterprise value."
+  },
+  {
+    q: "What does 'Marketing AI Concierge' mean?",
+    a: "A Marketing AI Concierge means we use AI to do the heavy lifting — research, content, optimization, reporting — while a senior strategist directs the work. You get enterprise-level execution without enterprise-level overhead. Think of it as having a world-class marketing department that also happens to have AI superpowers."
+  },
+  {
+    q: "Who is Whiskey River Media best for?",
+    a: "Whiskey River Media is built for operators and founders doing $1M+ in annual revenue who are serious about scaling or positioning for an exit. We work best with DTC brands, B2B service companies, SaaS businesses, and e-commerce operators who want marketing to become a documented, valuation-driving asset — not a cost center."
+  },
+  {
+    q: "What does 'Scale Smarter. Exit Stronger.' mean?",
+    a: "It's our core philosophy. Every strategy, campaign, and deliverable we build is designed not just to generate revenue today, but to make your business more valuable and more sellable tomorrow. We track what we call the MEC — Marketing Efficiency Coefficient — so your marketing performance is always tied to enterprise value, not just traffic or clicks."
+  },
+  {
+    q: "How is Whiskey River Media different from a traditional marketing agency?",
+    a: "Traditional agencies silo services, inflate retainers, and report on vanity metrics. We operate as a full-stack growth partner — paid media, SEO, creative, and brand strategy working in concert — with proprietary AI tools and a reporting framework built around business value. We also work month-to-month after your setup month, because we'd rather earn your business than lock you in."
+  },
+  {
+    q: "What is WhiskeyNeat.ai?",
+    a: "WhiskeyNeat.ai is our proprietary marketing intelligence platform — a white-labeled client dashboard that connects your paid media, SEO, and CRM data into a single real-time view. It's not a SaaS product you can buy. It's the intelligence layer provided exclusively to Whiskey River Media clients."
+  },
+  {
+    q: "Do you require long-term contracts?",
+    a: "No. Every engagement starts with a setup month — strategy, onboarding, and infrastructure. After that, we operate month-to-month. We believe the results should keep you here, not the contract."
+  },
+  {
+    q: "How do I get started with Whiskey River Media?",
+    a: "Apply at whiskeyrivermedia.com/apply. We review applications within 48 hours. If it's a fit, we schedule a strategy call, map your current marketing situation, and recommend the right engagement tier — honestly, even if that means a smaller scope than you expected."
+  }
+];
 
 export default function Home() {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -300,6 +336,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <Faq
+        items={homeFaqs}
+        subheading="Got Questions?"
+        heading="Everything You Need to Know About Whiskey River Media."
+      />
 
       {/* FINAL CTA */}
       <section className="py-32 px-6 text-center" style={{ backgroundColor: 'var(--bg-base)' }}>

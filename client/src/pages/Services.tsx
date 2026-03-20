@@ -1,4 +1,40 @@
 import { Link } from "wouter";
+import { Faq } from "@/components/Faq";
+
+const servicesFaqs = [
+  {
+    q: "How much does it cost to work with Whiskey River Media?",
+    a: "Our AI SEO plans start at $797/month. Full-Stack Partnership tiers are priced as a percentage of your total ad spend — Tier I at 10%, Tier II at 8%, Tier III at 6% — making them scale with your business. Standalone media buying starts at $1,500 setup plus a percentage of spend. Every engagement includes a setup month before moving to month-to-month."
+  },
+  {
+    q: "What is the Full-Stack Partnership?",
+    a: "The Full-Stack Partnership is our flagship engagement — a fully integrated growth operation covering paid media, SEO, content, email/SMS, and brand strategy. Rather than charging a flat retainer, we charge a percentage of your total ad spend, so our incentives are aligned with your growth. Tier I starts at 10% of spend, Tier II at 8%, and Tier III (our highest-volume tier) at 6%."
+  },
+  {
+    q: "What does the media buying service include?",
+    a: "Standalone media buying is for clients who have strong creative teams in-house and primarily need expert paid media management. It includes campaign strategy, audience architecture, bidding, optimization, and MEC reporting across platforms — starting at a $1,500 setup fee plus a percentage of spend. Note: clients provide the creative assets for this service."
+  },
+  {
+    q: "What is a setup month and why do you charge for it?",
+    a: "Month 1 is always a setup month. This is when we do the strategic groundwork: keyword mapping, audience research, technical audits, dashboard configuration, and campaign architecture. This investment ensures everything we build after is built on a solid foundation, not guesswork. It's the same price as your ongoing monthly fee."
+  },
+  {
+    q: "Does Whiskey River Media do branding?",
+    a: "Yes. We offer brand identity and positioning as both a standalone project and as part of Full-Stack Partnership engagements. This includes logo systems, visual identity, messaging frameworks, and positioning strategy — all built to scale across paid and organic channels."
+  },
+  {
+    q: "What industries does Whiskey River Media work with?",
+    a: "We've worked across DTC e-commerce, B2B services, SaaS, automotive aftermarket, health and wellness, food and beverage, professional services, and more. What we look for isn't an industry — it's a founder who's serious about scaling and thinks about business value, not just top-line revenue."
+  },
+  {
+    q: "Can I pick just one service, or do I need the full package?",
+    a: "You can start with a single service — SEO, media buying, or branding — and expand from there. We also offer à la carte options like landing page builds, email automations, and CRO audits. The Full-Stack Partnership is our most powerful offering, but we don't force clients into more than they're ready for."
+  },
+  {
+    q: "What is the MEC and why does it matter?",
+    a: "MEC stands for Marketing Efficiency Coefficient — our proprietary reporting framework that replaces vanity metrics (impressions, clicks, follower counts) with revenue-correlated performance data. Every report we deliver is organized around MEC because it tells the real story of your marketing ROI and creates a documentary trail that becomes a valuation asset if you ever sell."
+  }
+];
 
 export default function Services() {
   return (
@@ -464,6 +500,13 @@ export default function Services() {
         </div>
 
       </div>
+
+      <Faq
+        items={servicesFaqs}
+        subheading="Common Questions"
+        heading="Pricing, Services & How It Works."
+      />
+
     </div>
   );
 }

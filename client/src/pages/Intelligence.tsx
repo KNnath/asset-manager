@@ -2,6 +2,34 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { ArrowRight, Activity, BarChart3, Database } from "lucide-react";
 import dashboardMockup from "@/assets/images/dashboard-mockup.png";
+import { Faq } from "@/components/Faq";
+
+const intelligenceFaqs = [
+  {
+    q: "What is WhiskeyNeat.ai?",
+    a: "WhiskeyNeat.ai is Whiskey River Media's proprietary marketing intelligence platform. It's a white-labeled client dashboard that unifies your paid media data, SEO performance, and CRM signals into a single real-time view — built around the MEC (Marketing Efficiency Coefficient) framework. It is not a standalone SaaS product. It's the intelligence layer provided exclusively to WRM clients."
+  },
+  {
+    q: "Who has access to WhiskeyNeat.ai?",
+    a: "WhiskeyNeat.ai is exclusively available to active Whiskey River Media clients. It is not available for purchase as a standalone tool. Access is provisioned as part of your onboarding and is included in all Full-Stack Partnership and SEO tiers."
+  },
+  {
+    q: "What data does WhiskeyNeat.ai track?",
+    a: "WhiskeyNeat.ai connects via API to your marketing stack: Meta Ads, Google Ads, SearchAtlas (for SEO), and your CRM. It surfaces MEC scores, keyword rankings, organic traffic trends, paid media ROAS, and funnel performance — all in one place, updated in real time."
+  },
+  {
+    q: "What is the MEC (Marketing Efficiency Coefficient)?",
+    a: "The MEC is our proprietary performance framework — a single score that correlates your marketing activity to revenue impact and enterprise value. It replaces vanity metrics (impressions, clicks, follower counts) with data that actually matters for your P&L and your eventual exit. Every WhiskeyNeat.ai report is built around your MEC."
+  },
+  {
+    q: "Can I share WhiskeyNeat.ai access with my investors or acquirers?",
+    a: "Yes. One of the core design principles of WhiskeyNeat.ai is exit-readiness. The dashboard is structured so your marketing performance is documented, reportable, and presentable to investors, PE firms, or acquirers at any time. Many of our clients use it as a live marketing data room during due diligence."
+  },
+  {
+    q: "Does WhiskeyNeat.ai integrate with my existing tools?",
+    a: "WhiskeyNeat.ai integrates directly with Meta Ads, Google Ads, SearchAtlas, and CRM platforms via API. If you use a tool that isn't yet natively supported, our team can typically build a custom integration as part of your onboarding."
+  }
+];
 
 export default function Intelligence() {
   return (
@@ -75,6 +103,12 @@ export default function Intelligence() {
           </div>
         </div>
       </section>
+
+      <Faq
+        items={intelligenceFaqs}
+        subheading="Platform Questions"
+        heading="Everything About WhiskeyNeat.ai."
+      />
 
     </div>
   );

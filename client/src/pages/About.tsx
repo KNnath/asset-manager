@@ -1,3 +1,28 @@
+import { Faq } from "@/components/Faq";
+
+const aboutFaqs = [
+  {
+    q: "Who founded Whiskey River Media?",
+    a: "Whiskey River Media was founded by Zach Schaefer. Zach began his career operating five Culver's franchise locations in the Chicagoland and Phoenix markets before transitioning into performance marketing. He served as Director of Marketing at one of the largest DTC brands of its era before founding WRM with a team of senior strategists, engineers, and designers."
+  },
+  {
+    q: "What is Zach Schaefer's background in marketing?",
+    a: "Zach spent years in the trenches of direct-response marketing — Facebook, Google, native advertising — managing multi-million-dollar ad budgets before it was standard practice. His operator background (running franchises, managing P&Ls) gives him a perspective that pure agency founders rarely have: marketing isn't just about traffic, it's about what traffic does to business value."
+  },
+  {
+    q: "When was Whiskey River Media founded?",
+    a: "Whiskey River Media was founded in 2020. Since then, we've grown into a full-stack performance marketing agency and AI concierge serving founders across the United States and internationally."
+  },
+  {
+    q: "Is Whiskey River Media a remote company?",
+    a: "Yes. Whiskey River Media operates as a fully distributed team of elite strategists, media buyers, SEO specialists, engineers, and designers. Our clients are located across the U.S. and internationally — and we operate in their time zones."
+  },
+  {
+    q: "What does Whiskey River Media believe about marketing and exits?",
+    a: "We believe that great marketing should do two things: generate revenue now and increase enterprise value long-term. Too many founders treat marketing as a cost center. We treat it as the most important line item on your balance sheet — one that, when done right, directly impacts your valuation multiple when it's time to exit or raise."
+  }
+];
+
 export default function About() {
   return (
     <div className="min-h-screen pt-24 pb-32 bg-noise">
@@ -77,6 +102,13 @@ export default function About() {
         </div>
 
       </div>
+
+      <Faq
+        items={aboutFaqs}
+        subheading="About the Company"
+        heading="Questions About Whiskey River Media & Our Founder."
+      />
+
     </div>
   );
 }

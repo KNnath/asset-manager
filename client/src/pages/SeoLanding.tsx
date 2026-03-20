@@ -1,6 +1,46 @@
 import { Link } from "wouter";
 import { BrandLogos } from "@/components/BrandLogos";
+import { Faq } from "@/components/Faq";
 import { Search, BarChart3, FileText, Globe, Zap, Shield, TrendingUp, Check } from "lucide-react";
+
+const seoFaqs = [
+  {
+    q: "What is WRM AI SEO + Human?",
+    a: "WRM AI SEO + Human is Whiskey River Media's hybrid search optimization service — combining AI-powered tools (SearchAtlas) with senior U.S. SEO experts. AI handles the volume and speed: keyword research, content production, technical scanning. Humans handle the strategy, quality control, and alignment with your business goals and exit timeline."
+  },
+  {
+    q: "How is AI SEO different from traditional SEO?",
+    a: "Traditional SEO is slow, expensive, and often disconnected from business outcomes. AI SEO uses machine learning tools to map entire keyword universes, identify gaps, generate content, and track performance in hours instead of weeks. Our human layer ensures the AI output is accurate, on-brand, and strategically sound — giving you the best of both worlds without the limitations of either."
+  },
+  {
+    q: "How long does it take to see results from SEO?",
+    a: "Most clients begin seeing measurable ranking movement within 60 to 90 days. Significant organic traffic growth typically develops over months 3 through 6, with compounding returns as domain authority builds. SEO is not a short-term tactic — it's infrastructure. That's why we tie it to your exit timeline, not just this quarter's traffic report."
+  },
+  {
+    q: "What is SearchAtlas and why do you use it?",
+    a: "SearchAtlas is an AI-powered SEO platform that provides keyword research, content briefs, backlink analysis, competitor tracking, and on-page optimization — all in one system. We use it as the backbone of our AI SEO workflow because it dramatically accelerates what would otherwise take weeks of manual research, and it integrates directly with our client reporting dashboard."
+  },
+  {
+    q: "What is the Marketing Efficiency Coefficient (MEC)?",
+    a: "MEC is Whiskey River Media's proprietary reporting framework. Instead of reporting on vanity metrics like impressions or domain rating in isolation, we correlate your SEO performance to revenue impact and business value. Every monthly report is built around MEC so you always know what your SEO investment is actually doing for your business — and your potential valuation."
+  },
+  {
+    q: "What is LLM visibility strategy and which plans include it?",
+    a: "LLM visibility strategy is the process of optimizing your brand's presence in AI-generated answers — so when someone asks ChatGPT, Perplexity, or Google Gemini a question in your niche, your brand appears. This is the next frontier of search, and we include it in our Concierge+ and Full-Stack Partnership tiers."
+  },
+  {
+    q: "Do I need to sign a long-term SEO contract?",
+    a: "No. Month 1 is a setup month — strategy, keyword map, dashboard configuration, and technical audit. After that, we operate month-to-month. We believe the compounding results should keep you here, not a 12-month lock-in clause."
+  },
+  {
+    q: "What happens during Month 1 setup?",
+    a: "Month 1 is foundational. We conduct a full technical SEO audit, build your keyword map, configure your white-labeled SEO dashboard, identify your top 3 competitors, and develop your content and backlink strategy. By the end of Month 1, you have a complete SEO roadmap and the infrastructure to execute it."
+  },
+  {
+    q: "What size business is WRM AI SEO best for?",
+    a: "Our SEO service works best for businesses doing $1M or more in annual revenue who want organic search to become a real acquisition channel — not just a checkbox. Whether you're an e-commerce brand, B2B service company, or local business with national ambitions, we have a tier built for your current stage and your next one."
+  }
+];
 
 const tiers = [
   {
@@ -350,6 +390,13 @@ export default function SeoLanding() {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <Faq
+        items={seoFaqs}
+        subheading="SEO Questions Answered"
+        heading="Everything You Need to Know About WRM AI SEO."
+      />
 
       {/* FINAL CTA */}
       <section className="py-28 px-6 text-center" style={{ backgroundColor: 'var(--bg-base)' }}>
