@@ -90,8 +90,10 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-3">
-            <Link
+            <a
               href="https://whiskeyneat.ai/login"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-5 py-2 text-xs font-medium rounded transition-all"
               style={{
                 border: "1px solid rgba(255,255,255,0.18)",
@@ -99,7 +101,7 @@ export function Navbar() {
               }}
             >
               Client Login
-            </Link>
+            </a>
             <Link
               href="/apply"
               className="px-5 py-2 text-xs font-bold rounded transition-all hover:scale-[1.02]"
@@ -151,8 +153,10 @@ export function Navbar() {
             </Link>
           </div>
           <div className="mt-auto pb-12 flex flex-col gap-4">
-            <Link
+            <a
               href="https://whiskeyneat.ai/login"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={closeMenu}
               className="w-full text-center px-5 py-4 rounded"
               style={{
@@ -161,7 +165,7 @@ export function Navbar() {
               }}
             >
               Client Login
-            </Link>
+            </a>
             <Link
               href="/apply"
               onClick={closeMenu}
